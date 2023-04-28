@@ -5,6 +5,7 @@ import datetime as dt
 import numpy as np
 from sys import argv, exit
 from io import StringIO
+import coreSERIAL
 
 import matplotlib
 
@@ -24,27 +25,6 @@ form_class = uic.loadUiType("mainwindow.ui")[0]
 Ser=0
 x = np.arange(600)
 y = np.zeros(600)
-
-def read_end(the_port, End):
-  total_data=[];data=''
-  while True:
-    try:
-      data=the_port.read(1)
-    except:
-      break
-    if End in data:
-      total_data.append(data[:data.find(End)])
-      break
-    total_data.append(data)
-    if len(total_data)>1:
-      # check if end_of_data was split
-      last_pair=total_data[-2]+total_data[-1]
-      if End in last_pair:
-        total_data[-2]=last_pair[:last_pair.find(End)]
-        total_data.pop()
-        break
-  return ''.join(total_data)
-
 
 class Window(QMainWindow, form_class):
     def __init__(self):
@@ -97,8 +77,7 @@ class Window(QMainWindow, form_class):
       if enabled:
         cmd="START\n"
       Ser.write(cmd.encode())
-      #data=read_end(Ser, '\n')
-      data=Ser.read(100).split()
+      data=read_end(Ser, '\n')
       self.serverResponse.setText(str(data))
       self.serverCommand.setText("")
 
@@ -116,8 +95,7 @@ class Window(QMainWindow, form_class):
       )
       cmd="IDN?\n"
       Ser.write(cmd.encode())
-      #data=read_end(Ser, '\n')
-      data=Ser.read(100)
+      data=read_end(Ser, '\n')
       self.serverResponse.setText(str(data))
 
     def btn_close_clicked(self):
@@ -133,8 +111,7 @@ class Window(QMainWindow, form_class):
       global y
       cmd="PWR?\n"
       Ser.write(cmd.encode())
-      #data=read_end(Ser, '\n').split()
-      data=Ser.read(100).split()
+      data=read_end(Ser, '\n').split()
       self.dBm_textEdit.setText(str(float(data[0])))
       watt=(10**(float(data[0])/10))/1000
       watt_string = "{:.3e}".format(watt)
