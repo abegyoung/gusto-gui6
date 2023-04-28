@@ -10,7 +10,7 @@ Running in a virtual environment for now, so do once:
    python -m venv venv
    source venv/bin/activate
 
-   python -m pip pyqt6 pyqt6-tools pyserial numpy matplotlib
+   python -m pip install pyqt6 pyqt6-tools pyserial numpy matplotlib
    python startup.py
 ```
 
