@@ -23,9 +23,6 @@ from PyQt6.QtWidgets import (
 form_class = uic.loadUiType("mainwindow.ui")[0]
 
 Ser=0
-biasold=65100
-pixel=8
-
 
 class Window(QMainWindow, form_class):
     def __init__(self):
@@ -52,21 +49,18 @@ class Window(QMainWindow, form_class):
       self.dcdc6.toggled.connect(self.btn_dcdc6_clicked)
       self.dcdc7.toggled.connect(self.btn_dcdc7_clicked)
       self.dcdc8.toggled.connect(self.btn_dcdc8_clicked)
-            #qcl on
-      self.qcl_on.toggled.connect(self.btn_qclonoff_clicked)
 
-      #qcl mode
+      #QCL ON QCL MODE
+      self.qcl_on.toggled.connect(self.btn_qclonoff_clicked)
       self.qcl_mode.toggled.connect(self.imodeButton_clicked)
 
       #DAC spin buttons
-      #self.spin_bias1_dac.connect(self.spin_bias1_dac, SIGNAL("valueChanged(int)"),self.update_multbias1)
-      #self.spin_bias2_dac.connect(self.spin_bias2_dac, SIGNAL("valueChanged(int)"),self.update_multbias2)
-      #self.spin_bias3_dac.connect(self.spin_bias3_dac, SIGNAL("valueChanged(int)"),self.update_multbias3)
-      #self.spin_qcl1_dac.connect(self.spin_qcl1_dac, SIGNAL("valueChanged(int)"),self.update_qclbias1)
-      #self.spin_qcl2_dac.connect(self.spin_qcl2_dac, SIGNAL("valueChanged(int)"),self.update_qclbias2)
-      #self.spin_qcl3_dac.connect(self.spin_qcl3_dac, SIGNAL("valueChanged(int)"),self.update_qclbias3)
-
-
+      self.spin_bias1_dac.valueChanged.connect(self.update_multbias1)
+      self.spin_bias2_dac.valueChanged.connect(self.update_multbias2)
+      self.spin_bias3_dac.valueChanged.connect(self.update_multbias3)
+      self.spin_qcl1_dac.valueChanged.connect(self.update_qclbias1)
+      self.spin_qcl2_dac.valueChanged.connect(self.update_qclbias2)
+      self.spin_qcl3_dac.valueChanged.connect(self.update_qclbias3)
 
       ### TIMER ###
 
@@ -87,6 +81,10 @@ class Window(QMainWindow, form_class):
         status = QStatusBar()
         status.showMessage("I'm the Status Bar")
         self.setStatusBar(status)
+
+
+
+    ### DCDC TAB ###
 
     def btn_dcdc1_clicked(self, enabled):
       cmd="dcdc 1 0\r"
