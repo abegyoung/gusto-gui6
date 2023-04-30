@@ -35,7 +35,7 @@
     <property name="currentIndex">
      <number>0</number>
     </property>
-    <widget class="QWidget" name="tab">
+    <widget class="QWidget" name="main">
      <attribute name="title">
       <string>Main</string>
      </attribute>
@@ -394,14 +394,14 @@ Unchecked=CC</string>
       <property name="layoutDirection">
        <enum>Qt::LeftToRight</enum>
       </property>
+      <property name="showGroupSeparator" stdset="0">
+       <bool>true</bool>
+      </property>
       <property name="maximum">
        <number>15000000</number>
       </property>
       <property name="singleStep">
        <number>50000</number>
-      </property>
-      <property name="showGroupSeparator" stdset="0">
-       <bool>true</bool>
       </property>
      </widget>
      <widget class="QTextEdit" name="textEdit_5">
@@ -1034,26 +1034,10 @@ Unchecked=CC</string>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="tab_2">
+    <widget class="QWidget" name="dcdc">
      <attribute name="title">
       <string>DCDC</string>
      </attribute>
-     <widget class="QTextEdit" name="textEdit_25">
-      <property name="geometry">
-       <rect>
-        <x>327</x>
-        <y>361</y>
-        <width>361</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="verticalScrollBarPolicy">
-       <enum>Qt::ScrollBarAlwaysOff</enum>
-      </property>
-      <property name="horizontalScrollBarPolicy">
-       <enum>Qt::ScrollBarAlwaysOff</enum>
-      </property>
-     </widget>
      <widget class="QRadioButton" name="synthButton">
       <property name="geometry">
        <rect>
@@ -1890,9 +1874,9 @@ Unchecked=CC</string>
      <widget class="QLabel" name="label_62">
       <property name="geometry">
        <rect>
-        <x>429</x>
-        <y>316</y>
-        <width>141</width>
+        <x>732</x>
+        <y>275</y>
+        <width>61</width>
         <height>21</height>
        </rect>
       </property>
@@ -1910,8 +1894,8 @@ Unchecked=CC</string>
      <widget class="QPushButton" name="btn_lock_status">
       <property name="geometry">
        <rect>
-        <x>377</x>
-        <y>311</y>
+        <x>680</x>
+        <y>270</y>
         <width>41</width>
         <height>32</height>
        </rect>
@@ -1923,8 +1907,8 @@ Unchecked=CC</string>
      <widget class="QLabel" name="label_63">
       <property name="geometry">
        <rect>
-        <x>327</x>
-        <y>382</y>
+        <x>310</x>
+        <y>310</y>
         <width>111</width>
         <height>16</height>
        </rect>
@@ -2060,8 +2044,33 @@ Unchecked=CC</string>
        <string>out2</string>
       </property>
      </widget>
+     <widget class="QTextEdit" name="serverResponse_2">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>330</y>
+        <width>501</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+       </font>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="serverCommand_2">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>370</y>
+        <width>501</width>
+        <height>21</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
-    <widget class="QWidget" name="pidtab">
+    <widget class="QWidget" name="pidamp">
      <attribute name="title">
       <string>PID AMP</string>
      </attribute>
@@ -2177,7 +2186,7 @@ Unchecked=CC</string>
        <string>setpoint</string>
       </property>
      </widget>
-     <widget class="QTextEdit" name="serverResponse_2">
+     <widget class="QTextEdit" name="serverResponse_3">
       <property name="geometry">
        <rect>
         <x>310</x>
@@ -2250,7 +2259,7 @@ Unchecked=CC</string>
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QDoubleSpinBox" name="spin_pidsetpoint">
+     <widget class="QDoubleSpinBox" name="spin_pidsp">
       <property name="geometry">
        <rect>
         <x>100</x>
@@ -2367,7 +2376,7 @@ Unchecked=CC</string>
        <bool>false</bool>
       </property>
      </widget>
-     <widget class="QLineEdit" name="serverCommand_2">
+     <widget class="QLineEdit" name="serverCommand_3">
       <property name="geometry">
        <rect>
         <x>310</x>
@@ -2430,11 +2439,11 @@ Unchecked=CC</string>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="tab_4">
+    <widget class="QWidget" name="pidfreq">
      <attribute name="title">
       <string>PID FRQ</string>
      </attribute>
-     <widget class="QLineEdit" name="serverCommand_3">
+     <widget class="QLineEdit" name="serverCommand_4">
       <property name="geometry">
        <rect>
         <x>310</x>
@@ -2524,7 +2533,7 @@ Unchecked=CC</string>
        <string>I</string>
       </property>
      </widget>
-     <widget class="QTextEdit" name="serverResponse_3">
+     <widget class="QTextEdit" name="serverResponse_4">
       <property name="geometry">
        <rect>
         <x>310</x>
@@ -2648,7 +2657,7 @@ Unchecked=CC</string>
        <double>100.000000000000000</double>
       </property>
      </widget>
-     <widget class="QDoubleSpinBox" name="spin_pidsetpoint_2">
+     <widget class="QDoubleSpinBox" name="spin_pidsp_2">
       <property name="geometry">
        <rect>
         <x>100</x>
@@ -2812,332 +2821,6 @@ Unchecked=CC</string>
       </property>
       <property name="text">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; font-weight:600; color:#0000ff;&quot;&gt;Setpoint&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tab_3">
-     <attribute name="title">
-      <string>VCO REG</string>
-     </attribute>
-     <widget class="QSpinBox" name="spinBox_1">
-      <property name="geometry">
-       <rect>
-        <x>290</x>
-        <y>110</y>
-        <width>47</width>
-        <height>24</height>
-       </rect>
-      </property>
-      <property name="buttonSymbols">
-       <enum>QAbstractSpinBox::NoButtons</enum>
-      </property>
-      <property name="maximum">
-       <number>7</number>
-      </property>
-      <property name="value">
-       <number>4</number>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_70">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>110</y>
-        <width>151</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Reg 0x9 Charge Pump</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_1">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>110</y>
-        <width>80</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>write</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_71">
-      <property name="geometry">
-       <rect>
-        <x>290</x>
-        <y>90</y>
-        <width>51</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Dn Curr</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_72">
-      <property name="geometry">
-       <rect>
-        <x>350</x>
-        <y>90</y>
-        <width>51</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Up Curr</string>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spinBox_2">
-      <property name="geometry">
-       <rect>
-        <x>350</x>
-        <y>110</y>
-        <width>47</width>
-        <height>24</height>
-       </rect>
-      </property>
-      <property name="buttonSymbols">
-       <enum>QAbstractSpinBox::NoButtons</enum>
-      </property>
-      <property name="maximum">
-       <number>7</number>
-      </property>
-      <property name="value">
-       <number>4</number>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_73">
-      <property name="geometry">
-       <rect>
-        <x>410</x>
-        <y>90</y>
-        <width>51</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Dn Trim</string>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spinBox_3">
-      <property name="geometry">
-       <rect>
-        <x>410</x>
-        <y>110</y>
-        <width>47</width>
-        <height>24</height>
-       </rect>
-      </property>
-      <property name="buttonSymbols">
-       <enum>QAbstractSpinBox::NoButtons</enum>
-      </property>
-      <property name="maximum">
-       <number>15</number>
-      </property>
-      <property name="value">
-       <number>0</number>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spinBox_4">
-      <property name="geometry">
-       <rect>
-        <x>470</x>
-        <y>110</y>
-        <width>47</width>
-        <height>24</height>
-       </rect>
-      </property>
-      <property name="buttonSymbols">
-       <enum>QAbstractSpinBox::NoButtons</enum>
-      </property>
-      <property name="maximum">
-       <number>15</number>
-      </property>
-      <property name="value">
-       <number>0</number>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_74">
-      <property name="geometry">
-       <rect>
-        <x>470</x>
-        <y>90</y>
-        <width>51</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Up Trim</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_75">
-      <property name="geometry">
-       <rect>
-        <x>530</x>
-        <y>90</y>
-        <width>51</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Up Curr</string>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spinBox_5">
-      <property name="geometry">
-       <rect>
-        <x>530</x>
-        <y>110</y>
-        <width>47</width>
-        <height>24</height>
-       </rect>
-      </property>
-      <property name="buttonSymbols">
-       <enum>QAbstractSpinBox::NoButtons</enum>
-      </property>
-      <property name="maximum">
-       <number>7</number>
-      </property>
-      <property name="value">
-       <number>6</number>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spinBox_6">
-      <property name="geometry">
-       <rect>
-        <x>590</x>
-        <y>110</y>
-        <width>47</width>
-        <height>24</height>
-       </rect>
-      </property>
-      <property name="buttonSymbols">
-       <enum>QAbstractSpinBox::NoButtons</enum>
-      </property>
-      <property name="maximum">
-       <number>3</number>
-      </property>
-      <property name="value">
-       <number>0</number>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_76">
-      <property name="geometry">
-       <rect>
-        <x>650</x>
-        <y>90</y>
-        <width>51</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Up Curr</string>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spinBox_7">
-      <property name="geometry">
-       <rect>
-        <x>650</x>
-        <y>110</y>
-        <width>47</width>
-        <height>24</height>
-       </rect>
-      </property>
-      <property name="buttonSymbols">
-       <enum>QAbstractSpinBox::NoButtons</enum>
-      </property>
-      <property name="maximum">
-       <number>7</number>
-      </property>
-      <property name="value">
-       <number>0</number>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spinBox_8">
-      <property name="geometry">
-       <rect>
-        <x>710</x>
-        <y>110</y>
-        <width>47</width>
-        <height>24</height>
-       </rect>
-      </property>
-      <property name="buttonSymbols">
-       <enum>QAbstractSpinBox::NoButtons</enum>
-      </property>
-      <property name="maximum">
-       <number>3</number>
-      </property>
-      <property name="value">
-       <number>0</number>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_77">
-      <property name="geometry">
-       <rect>
-        <x>600</x>
-        <y>90</y>
-        <width>31</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>RES</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_78">
-      <property name="geometry">
-       <rect>
-        <x>720</x>
-        <y>90</y>
-        <width>31</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>RES</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_2">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>180</y>
-        <width>80</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>read</string>
-      </property>
-     </widget>
-     <widget class="QTextBrowser" name="textBrowser_1">
-      <property name="geometry">
-       <rect>
-        <x>290</x>
-        <y>140</y>
-        <width>111</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="verticalScrollBarPolicy">
-       <enum>Qt::ScrollBarAlwaysOff</enum>
-      </property>
-     </widget>
-     <widget class="QTextBrowser" name="textBrowser_2">
-      <property name="geometry">
-       <rect>
-        <x>290</x>
-        <y>180</y>
-        <width>111</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="verticalScrollBarPolicy">
-       <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
      </widget>
     </widget>
