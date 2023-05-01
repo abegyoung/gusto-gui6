@@ -60,3 +60,8 @@ B3LO frequency is controlled via SLED input and QCL bias is controlled from here
 
 ### VCO REG Tab
 Hittite synthesizer register settings may be read and written here.
+
+## Bias Server
+Front end bias of mixers is here.
+
+![alt text](https://github.com/abegyoung/gusto-gui6/blob/main/images/BiasServer.jpg?raw=true)
