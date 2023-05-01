@@ -148,7 +148,7 @@ class Window(QMainWindow, form_class):
 
    def updateDCDC_clicked(self, enabled):
      cmd= "setpower\n";
-     s.send(cmd)
+     s.send(cmd.encode())
      data=recv_end(s, 'EOF')
      powerstate=data.split()
      amcState     =int(powerstate[9])
@@ -208,10 +208,10 @@ class Window(QMainWindow, form_class):
      if enabled:
        dacvalue = int((9.0-3.0)*(65535/20)+32768)
      cmd="pid dacs 1 %d %d\n" % (2,dacvalue)
-     s.send(cmd)
+     s.send(cmd.encode())
      return1=recv_end(s,'\n')
      cmd="pid dacs 1 %d %d\n" % (6,dacvalue)
-     s.send(cmd)
+     s.send(cmd.encode())
      return2=recv_end(s,'\n')
      self.serverResponse.setText(str(return1)+'\n'+str(return2))
 
@@ -220,10 +220,10 @@ class Window(QMainWindow, form_class):
      if enabled:
        dacvalue = int((6.0-3.0)*(65535/20)+32768)
      cmd="pid dacs 1 %d %d\n" % (5,dacvalue)
-     s.send(cmd)
+     s.send(cmd.encode())
      return1=recv_end(s,'\n')
      cmd="pid dacs 1 %d %d\n" % (8,dacvalue)
-     s.send(cmd)
+     s.send(cmd.encode())
      return2=recv_end(s,'\n')
      self.serverResponse.setText(str(return1)+'\n'+str(return2))
 
@@ -231,7 +231,7 @@ class Window(QMainWindow, form_class):
      cmd="setpower pa14 0\n"
      if enabled:
        cmd="setpower pa14 1\n"
-     s.send(cmd)
+     s.send(cmd.encode())
      data=recv_end(s,'\n')
      self.serverResponse.setText(str(data))
 
@@ -239,7 +239,7 @@ class Window(QMainWindow, form_class):
      cmd="setpower amc 0\n"
      if enabled:
        cmd="setpower amc 1\n"
-     s.send(cmd)
+     s.send(cmd.encode())
      data=recv_end(s,'\n')
      self.serverResponse.setText(str(data))
 
@@ -247,7 +247,7 @@ class Window(QMainWindow, form_class):
      cmd="setpower synth14 0\n"
      if enabled:
        cmd="setpower synth14 1\n"
-     s.send(cmd)
+     s.send(cmd.encode())
      data=recv_end(s,'\n')
      self.serverResponse.setText(str(data))
 
@@ -255,7 +255,7 @@ class Window(QMainWindow, form_class):
      cmd="setpower pa19 0\n"
      if enabled:
        cmd="setpower pa19 1\n"
-     s.send(cmd)
+     s.send(cmd.encode())
      data=recv_end(s,'\n')
      self.serverResponse.setText(str(data))
 
@@ -263,7 +263,7 @@ class Window(QMainWindow, form_class):
      cmd="setpower synth19 0\n"
      if enabled:
        cmd="setpower synth19 1\n"
-     s.send(cmd)
+     s.send(cmd.encode())
      data=recv_end(s,'\n')
      self.serverResponse.setText(str(data))
 
@@ -271,7 +271,7 @@ class Window(QMainWindow, form_class):
      cmd="pid 8 0\n"
      if enabled:
        cmd="pid 8 1\n"
-     s.send(cmd)
+     s.send(cmd.encode())
      data=recv_end(s,'\n')
      self.serverResponse.setText(str(data))
 
@@ -279,7 +279,7 @@ class Window(QMainWindow, form_class):
      cmd="pid 5 0\n"
      if enabled:
        cmd="pid 5 1\n"
-     s.send(cmd)
+     s.send(cmd.encode())
      data=recv_end(s,'\n')
      self.serverResponse.setText(str(data))
 
@@ -287,7 +287,7 @@ class Window(QMainWindow, form_class):
      cmd="pid 2 0\n"
      if enabled:
        cmd="pid 2 1\n"
-     s.send(cmd)
+     s.send(cmd.encode())
      data=recv_end(s,'\n')
      self.serverResponse.setText(str(data))
 
@@ -295,7 +295,7 @@ class Window(QMainWindow, form_class):
      cmd="pid 6 0\n"
      if enabled:
        cmd="pid 6 1\n"
-     s.send(cmd)
+     s.send(cmd.encode())
      data=recv_end(s,'\n')
      self.serverResponse.setText(str(data))
 
@@ -303,20 +303,20 @@ class Window(QMainWindow, form_class):
      cmd="pid 7 0\n"
      if enabled:
        cmd="pid 7 1\n"
-     s.send(cmd)
+     s.send(cmd.encode())
      data=recv_end(s,'\n')
      self.serverResponse.setText(str(data))
 
    def vmodeButton_clicked(self, enabled):
      #Set zero bias first
      cmd="zerobias\n"
-     s.send(cmd)
+     s.send(cmd.encode())
      data=recv_end(s,'\n')
      self.serverResponse.setText(str(data))
      cmd="setfeedback --mask 0\n"
      if enabled:
        cmd="setfeedback --mask 255\n"
-     s.send(cmd)
+     s.send(cmd.encode())
      data=recv_end(s,'\n')
      self.serverResponse.setText(str(data))
 
@@ -324,7 +324,7 @@ class Window(QMainWindow, form_class):
      cmd="setpower relay 0\n"
      if enabled:
        cmd="setpower relay 1\n"
-     s.send(cmd)
+     s.send(cmd.encode())
      data=recv_end(s,'\n')
      self.serverResponse.setText(str(data))
 
@@ -362,7 +362,7 @@ class Window(QMainWindow, form_class):
      dacvalue = self.spinSV1.value()
      dacvalue = int(dacvalue*(65535/20)+32768)
      cmd="pid dacs 0 %d %d\n" % (8,dacvalue)
-     s.send(cmd)
+     s.send(cmd.encode())
      data=recv_end(s,'\n')
      self.serverResponse.setText(str(data))
 
@@ -370,7 +370,7 @@ class Window(QMainWindow, form_class):
      dacvalue = self.spinSV2.value()
      dacvalue = int(dacvalue*(65535/20)+32768)
      cmd="pid dacs 0 %d %d\n" % (5,dacvalue)
-     s.send(cmd)
+     s.send(cmd.encode())
      data=recv_end(s,'\n')
      self.serverResponse.setText(str(data))
 
@@ -378,7 +378,7 @@ class Window(QMainWindow, form_class):
      dacvalue = self.spinSV3.value()
      dacvalue = int(dacvalue*(65535/20)+32768)
      cmd="pid dacs 0 %d %d\n" % (2,dacvalue)
-     s.send(cmd)
+     s.send(cmd.encode())
      data=recv_end(s,'\n')
      self.serverResponse.setText(str(data))
 
@@ -386,7 +386,7 @@ class Window(QMainWindow, form_class):
      dacvalue = self.spinSV4.value()
      dacvalue = int(dacvalue*(65535/20)+32768)
      cmd="pid dacs 0 %d %d\n" % (6,dacvalue)
-     s.send(cmd)
+     s.send(cmd.encode())
      data=recv_end(s,'\n')
      self.serverResponse.setText(str(data))
 
@@ -394,7 +394,7 @@ class Window(QMainWindow, form_class):
      dacvalue = self.spinDC1.value()-3.0
      dacvalue = int(dacvalue*(65535/20)+32768)
      cmd="pid dacs 1 %d %d\n" % (8,dacvalue)
-     s.send(cmd)
+     s.send(cmd.encode())
      data=recv_end(s,'\n')
      self.serverResponse.setText(str(data))
 
@@ -402,7 +402,7 @@ class Window(QMainWindow, form_class):
      dacvalue = self.spinDC2.value()-3.0
      dacvalue = int(dacvalue*(65535/20)+32768)
      cmd="pid dacs 1 %d %d\n" % (5,dacvalue)
-     s.send(cmd)
+     s.send(cmd.encode())
      data=recv_end(s,'\n')
      self.serverResponse.setText(str(data))
 
@@ -410,7 +410,7 @@ class Window(QMainWindow, form_class):
      dacvalue = self.spinDC3.value()-3.0
      dacvalue = int(dacvalue*(65535/20)+32768)
      cmd="pid dacs 1 %d %d\n" % (2,dacvalue)
-     s.send(cmd)
+     s.send(cmd.encode())
      data=recv_end(s,'\n')
      self.serverResponse.setText(str(data))
 
@@ -418,7 +418,7 @@ class Window(QMainWindow, form_class):
      dacvalue = self.spinDC4.value()-3.0
      dacvalue = int(dacvalue*(65535/20)+32768)
      cmd="pid dacs 1 %d %d\n" % (6,dacvalue)
-     s.send(cmd)
+     s.send(cmd.encode())
      data=recv_end(s,'\n')
      self.serverResponse.setText(str(data))
 
@@ -426,7 +426,7 @@ class Window(QMainWindow, form_class):
      global biasold
      biasold=32768
      cmd="zerobias\n"
-     s.send(cmd)
+     s.send(cmd.encode())
      data=recv_end(s,'\n')
      self.serverResponse.setText(str(data))
           
@@ -437,12 +437,12 @@ class Window(QMainWindow, form_class):
      biasnew = self.spinVoltage.value()
      if(biasnew != biasold):
        cmd="setbias --chan %d --dac %d\n" % (pixel, biasnew)
-       s.send(cmd)
+       s.send(cmd.encode())
        data=recv_end(s,'\n')
        self.serverResponse.setText(str(data))
        biasold=biasnew
      cmd="getbias --chan %d\n" % pixel
-     s.send(cmd)
+     s.send(cmd.encode())
      data=recv_end(s,'\n').split()
      self.serverResponse.setText(str(data))
      voltage=float(data[1]) + float(VOffset)
@@ -475,18 +475,18 @@ class Window(QMainWindow, form_class):
      global stop
      global VOffset
      cmd="getbias --chan %d\n" % pixel
-     s.send(cmd)
+     s.send(cmd.encode())
      data=recv_end(s, '\n').split()
      #sweep -v to +v
      cmd="sweep --chan %d --start %d --stop %d --num %d\n" % (pixel, start, stop, numPoints)
-     s.send(cmd)
+     s.send(cmd.encode())
      data=recv_end(s,'EOF')
      xytp = np.genfromtxt(StringIO(data[0:len(data)-4]),delimiter=" ", usecols=(3,6))
      xytp[0:(numPoints-1),0] += VOffset
      #sweep +v to -v
      if self.set_bid.isChecked():
         cmd="sweep --chan %d --stop %d --start %d --num %d\n" % (pixel, stop, start, numPoints)
-        s.send(cmd)
+        s.send(cmd.encode())
         data=recv_end(s,'EOF')
         xytp2 = np.genfromtxt(StringIO(data[0:len(data)-4]),delimiter=" ", usecols=(3,6))
         xytp2[0:(numPoints-1),0] += VOffset

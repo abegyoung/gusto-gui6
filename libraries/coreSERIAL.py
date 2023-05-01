@@ -44,7 +44,7 @@ def recv_end(the_socket, End):
    total_data=[];data=''
    while True:
       try:
-         data=the_socket.recv(8192)
+         data=the_socket.recv(8192).decode()
       except:
          break
       if End in data:
