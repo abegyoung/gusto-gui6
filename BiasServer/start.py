@@ -1,31 +1,30 @@
-#!/opt/local/bin/python2.7
 import sys
 import time
 import socket
 import datetime as dt
 import numpy as np
-from string import split
-from StringIO import StringIO
-from PyQt4 import QtCore, QtGui, uic
-
-sport = 9001
-serverip = '192.168.0.211'
-
-import QLed
 from sys import argv, exit
-from PyQt4 import QtGui, QtCore
-from PyQt4.QtGui import QApplication, QWidget, QPainter, QGridLayout, QSizePolicy, QStyleOption
-from PyQt4.QtCore import pyqtSignal, Qt, QSize, QTimer, QByteArray, QRectF, pyqtProperty
-from PyQt4.QtSvg import QSvgRenderer
-from colorsys import rgb_to_hls, hls_to_rgb
+from io import StringIO
 
-execfile('QLedInclude.py')
+import matplotlib
+import coreSERIAL
 
-from PyQt4.Qwt5.qplt import *
+from PyQt6 import QtCore, uic
+from PyQt6.QtWidgets import (
+    QApplication,
+    QLabel,
+    QPushButton,
+    QMainWindow,
+    QStatusBar,
+    QToolBar,
+    QWidget,
+)
 
 form_class = uic.loadUiType("mainwindow.ui")[0]
 
 s=0
+sport = 9001
+serverip = '192.168.1.100'
 biasold=32768
 pixel=1
 
@@ -47,7 +46,7 @@ def recv_end(the_socket, End):
    total_data=[];data=''
    while True:
       try:
-         data=the_socket.recv(8192)
+         data=the_socket.recv(8192).decode()
       except:
          break
       if End in data:
@@ -63,15 +62,21 @@ def recv_end(the_socket, End):
             break
    return ''.join(total_data)
 
-class MyWindowClass(QtGui.QMainWindow, form_class):
-   def __init__(self, parent=None):
-      QtGui.QWidget.__init__(self, parent)
+
+class Window(QMainWindow, form_class):
+   def __init__(self):
+      super().__init__(parent=None)
+      self.setWindowTitle("QMainWindow")
+      self.setCentralWidget(QLabel("I'm the Central Widget"))
+      self._createMenu()
       self.setupUi(self)
+
+      ### SIGNALS AND SLOTS ###
 
       self.btn_zeropots.clicked.connect(self.btn_zeropots_clicked)      #OK
       self.btn_setbias.clicked.connect(self.btn_setbias_clicked)        #OK
-      self.spinVoltage.connect(self.spinVoltage, SIGNAL("valueChanged(int)"),self.btn_setbias_clicked)
-      self.spinLNA.connect(self.spinLNA, SIGNAL("valueChanged(int)"),self.update_LNA)
+      self.spinVoltage.valueChanged.connect(self.btn_setbias_clicked)
+      self.spinLNA.valueChanged.connect(self.update_LNA)
       self.btn_sweep.clicked.connect(self.btn_sweep_clicked)
       self.pid1.toggled.connect(self.btn_pid1_clicked)
       self.pid2.toggled.connect(self.btn_pid2_clicked)
@@ -79,27 +84,27 @@ class MyWindowClass(QtGui.QMainWindow, form_class):
       self.pid4.toggled.connect(self.btn_pid4_clicked)
       self.relayButton.toggled.connect(self.relayButton_clicked)
       self.vmodeButton.toggled.connect(self.vmodeButton_clicked)
-      self.spinSV1.connect(self.spinSV1, SIGNAL("valueChanged(double)"),self.update_pidSV1)
-      self.spinSV2.connect(self.spinSV2, SIGNAL("valueChanged(double)"),self.update_pidSV2)
-      self.spinSV3.connect(self.spinSV3, SIGNAL("valueChanged(double)"),self.update_pidSV3)
-      self.spinSV4.connect(self.spinSV4, SIGNAL("valueChanged(double)"),self.update_pidSV4)
-      self.spinDC1.connect(self.spinDC1, SIGNAL("valueChanged(double)"),self.update_pidDC1)
-      self.spinDC2.connect(self.spinDC2, SIGNAL("valueChanged(double)"),self.update_pidDC2)
-      self.spinDC3.connect(self.spinDC3, SIGNAL("valueChanged(double)"),self.update_pidDC3)
-      self.spinDC4.connect(self.spinDC4, SIGNAL("valueChanged(double)"),self.update_pidDC4)
+      self.spinSV1.valueChanged.connect(self.update_pidSV1)
+      self.spinSV2.valueChanged.connect(self.update_pidSV2)
+      self.spinSV3.valueChanged.connect(self.update_pidSV3)
+      self.spinSV4.valueChanged.connect(self.update_pidSV4)
+      self.spinDC1.valueChanged.connect(self.update_pidDC1)
+      self.spinDC2.valueChanged.connect(self.update_pidDC2)
+      self.spinDC3.valueChanged.connect(self.update_pidDC3)
+      self.spinDC4.valueChanged.connect(self.update_pidDC4)
 
-      self.spindV_1.connect(self.spindV_1, SIGNAL("valueChanged(double)"),self.update_spindV)
-      self.spindV_2.connect(self.spindV_2, SIGNAL("valueChanged(double)"),self.update_spindV)
-      self.spindV_3.connect(self.spindV_3, SIGNAL("valueChanged(double)"),self.update_spindV)
-      self.spindV_4.connect(self.spindV_4, SIGNAL("valueChanged(double)"),self.update_spindV)
-      self.spindV_5.connect(self.spindV_5, SIGNAL("valueChanged(double)"),self.update_spindV)
-      self.spindV_6.connect(self.spindV_6, SIGNAL("valueChanged(double)"),self.update_spindV)
-      self.spindV_7.connect(self.spindV_7, SIGNAL("valueChanged(double)"),self.update_spindV)
-      self.spindV_8.connect(self.spindV_8, SIGNAL("valueChanged(double)"),self.update_spindV)
+      self.spindV_1.valueChanged.connect(self.update_spindV)
+      self.spindV_2.valueChanged.connect(self.update_spindV)
+      self.spindV_3.valueChanged.connect(self.update_spindV)
+      self.spindV_4.valueChanged.connect(self.update_spindV)
+      self.spindV_5.valueChanged.connect(self.update_spindV)
+      self.spindV_6.valueChanged.connect(self.update_spindV)
+      self.spindV_7.valueChanged.connect(self.update_spindV)
+      self.spindV_8.valueChanged.connect(self.update_spindV)
 
-      self.spinnumSweep.connect(self.spinnumSweep, SIGNAL("valueChanged(int)"),self.update_sweepnum)
-      self.sweepstart.connect(self.sweepstart, SIGNAL("valueChanged(int)"),self.update_sweepstart)
-      self.sweepstop.connect(self.sweepstop, SIGNAL("valueChanged(int)"),self.update_sweepstop)
+      self.spinnumSweep.valueChanged.connect(self.update_sweepnum)
+      self.sweepstart.valueChanged.connect(self.update_sweepstart)
+      self.sweepstop.valueChanged.connect(self.update_sweepstop)
       
       self.pixelButton_1.toggled.connect(self.pixelButton_1_clicked)
       self.pixelButton_2.toggled.connect(self.pixelButton_2_clicked)
@@ -111,10 +116,10 @@ class MyWindowClass(QtGui.QMainWindow, form_class):
       self.pixelButton_8.toggled.connect(self.pixelButton_8_clicked)
       self.btn_close.clicked.connect(self.btn_close_clicked)
       self.btn_open.clicked.connect(self.btn_open_clicked)
-      self.serverCommand.connect(self.serverCommand, SIGNAL("returnPressed(void)"), self.sendcmd)
+      self.serverCommand.returnPressed.connect(self.sendcmd)
 
-      self.ipAddress.connect(self.ipAddress, SIGNAL("returnPressed(void)"), self.updateIP)
-      self.TCPport.connect(self.TCPport, SIGNAL("returnPressed(void)"), self.updatePORT)
+      self.ipAddress.returnPressed.connect(self.updateIP)
+      self.TCPport.returnPressed.connect(self.updatePORT)
 
       self.dcbias1.toggled.connect(self.btn_dcbias1_clicked)
       self.dcbias2.toggled.connect(self.btn_dcbias2_clicked)
@@ -130,6 +135,10 @@ class MyWindowClass(QtGui.QMainWindow, form_class):
       self.timer = QtCore.QTimer(self)
       self.timer.setInterval(10000)
       self.timer.timeout.connect(self.blink)
+
+   def _createMenu(self):
+     menu = self.menuBar().addMenu("&Menu")
+     menu.addAction("&Exit", self.close)
 
    def start(self):
      self.timer.start()
@@ -164,8 +173,10 @@ class MyWindowClass(QtGui.QMainWindow, form_class):
 
    def sendcmd(self):
      cmd= "%s\n" % self.serverCommand.text()
-     s.send(cmd)
+     s.send(cmd.encode())
+     print(cmd)
      data=recv_end(s, '\n')
+     print(data)
      self.serverResponse.setText(str(data))
      self.serverCommand.setText("")
      if(cmd=="pid\n"):
@@ -445,11 +456,11 @@ class MyWindowClass(QtGui.QMainWindow, form_class):
      global pixel
      value = self.spinLNA.value()
      cmd="setLNA --chan %d --dac %d\n" % (pixel, value)
-     s.send(cmd)
+     s.send(cmd.encode())
      data=recv_end(s,'\n')
      self.serverResponse.setText(str(data))
      cmd="getLNA --chan %d\n" % pixel
-     s.send(cmd)
+     s.send(cmd.encode())
      data=recv_end(s,'\n').split()
      self.serverResponse.setText(str(data))
      LNAV=float(data[1])
@@ -498,7 +509,6 @@ class MyWindowClass(QtGui.QMainWindow, form_class):
         d=dt.datetime.combine(today,time)
         fname=d.strftime("%m%d_%H%M%S.txt")
         comment = "%s" % self.IVsweep_text.text()
-        print comment
         if self.set_bid.isChecked():
            arr = np.array(np.hstack([xytp[0:(numPoints-1),0:2],xytp2[0:(numPoints-1),0:2]]))
            np.savetxt(fname, arr, fmt='%s', header=comment)
@@ -573,25 +583,27 @@ class MyWindowClass(QtGui.QMainWindow, form_class):
       s.close()
       del s
       self.timer.stop()
-      self.led.leds[0].valueFalse()
+      #self.led.leds[0].valueFalse()
 
    def btn_open_clicked(self):
-      try:
-         global s
-         s  =socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-         s.connect((serverip, sport))
-         self.led.leds[0].valueTrue()
-      except socket.error, exc:
-         self.led.leds[0].valueFalse()
+     #try:
+      global s
+      s  =socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+      s.connect((serverip, sport))
+      #self.led.leds[0].valueTrue()
+     # except socket.error, exc:
+      #self.led.leds[0].valueFalse()
       s.settimeout(30)
       #self.timer.start()
 
 def main():
-  app = QtGui.QApplication(sys.argv)
-  myWindow = MyWindowClass(None)
-  myWindow.show()
-  app.exec_()
+    app = QtGui.QApplication(sys.argv)
+    myWindow = MyWindowClass(None)
+    myWindow.show()
+    app.exec_()
 
-if __name__ == '__main__':
-  main()
-
+if __name__ == "__main__":
+    app = QApplication([])
+    window = Window()
+    window.show()
+    sys.exit(app.exec())

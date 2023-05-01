@@ -74,17 +74,6 @@
        <string/>
       </property>
      </widget>
-     <widget class="LedWidget" name="led" native="true">
-      <property name="geometry">
-       <rect>
-        <x>670</x>
-        <y>323</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout"/>
-     </widget>
      <widget class="Line" name="line_4">
       <property name="geometry">
        <rect>
@@ -1539,7 +1528,7 @@
      <x>0</x>
      <y>0</y>
      <width>787</width>
-     <height>22</height>
+     <height>24</height>
     </rect>
    </property>
   </widget>
@@ -1554,12 +1543,6 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
-  <customwidget>
-   <class>LedWidget</class>
-   <extends>QWidget</extends>
-   <header>ledwidget.h</header>
-   <container>1</container>
-  </customwidget>
   <customwidget>
    <class>MplWidget</class>
    <extends>QWidget</extends>
