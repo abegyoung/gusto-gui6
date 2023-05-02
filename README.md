@@ -1,11 +1,15 @@
 # gusto-gui6
-Fork of gusto-gut porting from pyqt4 and py27 to pyqt6 and py311
+The GUSTO graphical user interfaces started life in a hotel room (as all good things do) in Christchurch, NZ (CHC) while waiting for my ice flight to Antarctica for STO-2 in 2015.  The original gui used PyQt 4 and Python 2.7 to connect to the HEB receiver server over TCP/IP and allowed one to bias mixers, switch local oscillator DCDCs, and display IV curves using matplotlib.
+
+Many more GUIs have proliferated from that template, including autocorrelator control & display, and now GUSTO LO controls.
+
+I've finally been convinced that PyQt 3 is the future of 2023, and this repository updates the old GUIs to use the PyQt 6 framework and Python 3.11
 
 ## Installation
 ### For Mac:
-Oh Lord, Ventura has made me upgrade from pyqt4 and Python2.7 to pyqt6 and Python3.
+Oh Lord, Ventura has made me upgrade from PyQt4 and Python2.7 to PyQt6 and Python3.
 
-Running in a virtual environment for now, so do once:
+GUIs can be run in a virtual environment or installed locally.  To set up a venv, do:
 ```
    python -m venv venv
    source venv/bin/activate
