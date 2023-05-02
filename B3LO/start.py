@@ -217,8 +217,8 @@ class Window(QMainWindow, form_class):
         self.serverResponse.setText(str(data))
         Vmon=float(data[3])
         Imon=float(data[6])
-        self.textEdit_7.setText(str(Vmon))
-        self.textEdit_8.setText(str(Imon))
+        self.mult1_vmon.setText(str(Vmon))
+        self.mult1_imon.setText(str(Imon))
 
     def update_multbias2(self):
         value = self.spin_bias2_dac.value()
@@ -228,8 +228,8 @@ class Window(QMainWindow, form_class):
         self.serverResponse.setText(str(data))
         Vmon=float(data[3])
         Imon=float(data[6])
-        self.textEdit_9.setText(str(Vmon))
-        self.textEdit_10.setText(str(Imon))
+        self.mult2_vmon.setText(str(Vmon))
+        self.mult2_imon.setText(str(Imon))
 
     def update_multbias3(self):
         value = self.spin_bias3_dac.value()
@@ -239,8 +239,8 @@ class Window(QMainWindow, form_class):
         self.serverResponse.setText(str(data))
         Vmon=float(data[3])
         Imon=float(data[6])
-        self.textEdit_11.setText(str(Vmon))
-        self.textEdit_12.setText(str(Imon))
+        self.mult3_vmon.setText(str(Vmon))
+        self.mult3_imon.setText(str(Imon))
 
     def update_qclbias1(self):
         value = self.spin_qcl1_dac.value()
@@ -251,9 +251,9 @@ class Window(QMainWindow, form_class):
         Vmon=float(data[3])
         Imon=float(data[6])
         Vs  =float(data[10])
-        self.textEdit_1.setText(str(Vmon))
-        self.textEdit_2.setText(str(Imon))
-        self.textEdit_41.setText(str(Vs))
+        self.qcl1_vmon.setText(str(Vmon))
+        self.qcl1_imon.setText(str(Imon))
+        self.qcl1_vsen.setText(str(Vs))
 
     def update_qclbias2(self):
         value = self.spin_qcl2_dac.value()
@@ -264,9 +264,9 @@ class Window(QMainWindow, form_class):
         Vmon=float(data[3])
         Imon=float(data[6])
         Vs  =float(data[10])
-        self.textEdit_3.setText(str(Vmon))
-        self.textEdit_4.setText(str(Imon))
-        self.textEdit_42.setText(str(Vs))
+        self.qcl2_vmon.setText(str(Vmon))
+        self.qcl2_imon.setText(str(Imon))
+        self.qcl2_vsen.setText(str(Vs))
 
     def update_qclbias3(self):
         value = self.spin_qcl3_dac.value()
@@ -277,9 +277,9 @@ class Window(QMainWindow, form_class):
         Vmon=float(data[3])
         Imon=float(data[6])
         Vs  =float(data[10])
-        self.textEdit_5.setText(str(Vmon))
-        self.textEdit_6.setText(str(Imon))
-        self.textEdit_43.setText(str(Vs))
+        self.qcl3_vmon.setText(str(Vmon))
+        self.qcl3_imon.setText(str(Imon))
+        self.qcl3_vsen.setText(str(Vs))
 
     def update_psat(self):
         value = self.spin_psat_dac.value()
@@ -287,8 +287,8 @@ class Window(QMainWindow, form_class):
         Ser.write(cmd.encode())
         data=coreSERIAL.read_end(Ser, '\n').split()
         self.serverResponse.setText(str(data))
-        self.textEdit_psatv.setText(str(float(data[2])))
-        self.textEdit_psati.setText(str(float(data[5])))
+        self.psatv.setText(str(float(data[2])))
+        self.psati.setText(str(float(data[5])))
 
     def btn_qclonoff_clicked(self, enabled):
         if enabled:
@@ -304,15 +304,15 @@ class Window(QMainWindow, form_class):
         cmd="qcl\r"
         Ser.write(cmd.encode())
         data=coreSERIAL.read_end_multi(Ser, 'END\n').split()
-        self.textEdit_1.setText( str(float(data[3])))   #QCL 1 V
-        self.textEdit_2.setText( str(float(data[6])))   #QCL 1 I
-        self.textEdit_41.setText(str(float(data[9])))   #QCL 1 Vsense
-        self.textEdit_3.setText( str(float(data[13])))  #QCL 2 V
-        self.textEdit_4.setText( str(float(data[16])))  #QCL 2 I
-        self.textEdit_42.setText(str(float(data[19])))  #QCL 2 Vsense
-        self.textEdit_5.setText( str(float(data[23])))  #QCL 3 V
-        self.textEdit_6.setText( str(float(data[26])))  #QCL 3 I
-        self.textEdit_43.setText(str(float(data[29])))  #QCL 3 Vsense
+        self.qcl1_vmon.setText( str(float(data[3])))   #QCL 1 V
+        self.qcl1_imon.setText( str(float(data[6])))   #QCL 1 I
+        self.qcl1_vsen.setText(str(float(data[9])))   #QCL 1 Vsense
+        self.qcl2_vmon.setText( str(float(data[13])))  #QCL 2 V
+        self.qcl2_imon.setText( str(float(data[16])))  #QCL 2 I
+        self.qcl2_vsen.setText(str(float(data[19])))  #QCL 2 Vsense
+        self.qcl3_vmon.setText( str(float(data[23])))  #QCL 3 V
+        self.qcl3_imon.setText( str(float(data[26])))  #QCL 3 I
+        self.qcl3_vsen.setText(str(float(data[29])))  #QCL 3 Vsense
 
     def update_voicecoil(self):
         value = self.spin_voicecoil.value()
@@ -320,7 +320,7 @@ class Window(QMainWindow, form_class):
         Ser.write(cmd.encode())
         data=coreSERIAL.read_end(Ser, '\n').split()
         self.serverResponse.setText(str(data))
-        self.textEdit_30.setText(str(float(data[2])))
+        self.vcoil_I.setText(str(float(data[2])))
 
     def btn_open_clicked(self):
         global Ser
@@ -385,13 +385,6 @@ class Window(QMainWindow, form_class):
         #fill the tuple with data
         v = Volts._make(datan[1::2])
 
-        self.rail0.setText(str("p5V_REF_MON"))
-        self.rail1.setText(str("n36V_MON_BUF"))
-        self.rail2.setText(str("p5V_ANA_MON"))
-        self.rail3.setText(str("pV_ANA_MON"))
-        self.rail4.setText(str("nV_ANA_MON_BUF"))
-        self.rail5.setText(str("p5V_MON"))
-        self.rail6.setText(str("SBC_3p3V"))
         self.rail_val_0.setText(str(v.p5V_REF_MON))
         self.rail_val_1.setText(str(v.n36V_MON_BUF))
         self.rail_val_2.setText(str(v.p5V_ANA_MON))
@@ -400,9 +393,6 @@ class Window(QMainWindow, form_class):
         self.rail_val_5.setText(str(v.p5V_MON))
         self.rail_val_6.setText(str(v.SBC_3p3V))
 
-        self.out0.setText(str("QCL_COIL_V"))
-        self.out1.setText(str("QCL_HTR_V"))
-        self.out2.setText(str("PSAT_Vmon"))
         self.out_val_v_0.setText(str(v.QCL_COIL_V))
         self.out_val_v_1.setText(str(v.QCL_HTR_V))
         self.out_val_v_2.setText(str(v.PSAT_Vmon))
@@ -413,34 +403,34 @@ class Window(QMainWindow, form_class):
         cmd="temps\r"
         Ser.write(cmd.encode())
         data=coreSERIAL.read_end_multi(Ser, 'END\n').split()
-        self.textEdit_temp1.setText(str(100.*float(data[1+0*2])-273))
-        self.textEdit_temp2.setText(str(100.*float(data[1+1*2])-273))
-        self.textEdit_temp3.setText(str(100.*float(data[1+2*2])-273))
-        self.textEdit_temp4.setText(str(100.*float(data[1+3*2])-273))
-        self.textEdit_temp5.setText(str(100.*float(data[1+4*2])-273))
-        self.textEdit_temp6.setText(str(100.*float(data[1+5*2])-273))
-        self.textEdit_temp7.setText(str(100.*float(data[1+6*2])-273))
-        self.textEdit_temp8.setText(str(100.*float(data[1+7*2])-273))
+        self.temp1.setText(str(100.*float(data[1+0*2])-273))
+        self.temp2.setText(str(100.*float(data[1+1*2])-273))
+        self.temp3.setText(str(100.*float(data[1+2*2])-273))
+        self.temp4.setText(str(100.*float(data[1+3*2])-273))
+        self.temp5.setText(str(100.*float(data[1+4*2])-273))
+        self.temp6.setText(str(100.*float(data[1+5*2])-273))
+        self.temp7.setText(str(100.*float(data[1+6*2])-273))
+        self.temp8.setText(str(100.*float(data[1+7*2])-273))
 
         cmd="psat\r"
         Ser.write(cmd.encode())
         data=coreSERIAL.read_end(Ser, '\n').split()
-        self.textEdit_psatv.setText(str(float(data[2])))
-        self.textEdit_psati.setText(str(float(data[5])))
+        self.psatv.setText(str(float(data[2])))
+        self.psati.setText(str(float(data[5])))
         self.spin_psat_dac.setValue(int(data[8]))
 
         cmd="qcl\r"
         Ser.write(cmd.encode())
         data=coreSERIAL.read_end_multi(Ser, 'END\n').split()
-        self.textEdit_1.setText( str(float(data[3])))   #QCL 1 V
-        self.textEdit_2.setText( str(float(data[6])))   #QCL 1 I
-        self.textEdit_41.setText(str(float(data[9])))   #QCL 1 Vsense
-        self.textEdit_3.setText( str(float(data[13])))  #QCL 2 V
-        self.textEdit_4.setText( str(float(data[16])))  #QCL 2 I
-        self.textEdit_42.setText(str(float(data[19])))  #QCL 2 Vsense
-        self.textEdit_5.setText( str(float(data[23])))  #QCL 3 V
-        self.textEdit_6.setText( str(float(data[26])))  #QCL 3 I
-        self.textEdit_43.setText(str(float(data[29])))  #QCL 3 Vsense
+        self.qcl1_vmon.setText( str(float(data[3])))   #QCL 1 V
+        self.qcl1_imon.setText( str(float(data[6])))   #QCL 1 I
+        self.qcl1_vsen.setText(str(float(data[9])))   #QCL 1 Vsense
+        self.qcl2_vmon.setText( str(float(data[13])))  #QCL 2 V
+        self.qcl2_imon.setText( str(float(data[16])))  #QCL 2 I
+        self.qcl2_vsen.setText(str(float(data[19])))  #QCL 2 Vsense
+        self.qcl3_vmon.setText( str(float(data[23])))  #QCL 3 V
+        self.qcl3_imon.setText( str(float(data[26])))  #QCL 3 I
+        self.qcl3_vsen.setText(str(float(data[29])))  #QCL 3 Vsense
 
         cmd="qcl 1\r"
         Ser.write(cmd.encode())
@@ -459,14 +449,14 @@ class Window(QMainWindow, form_class):
         Ser.write(cmd.encode())
         data=coreSERIAL.read_end_multi(Ser, 'END\n').split()
         self.serverResponse.setText(str(data))
-        self.textEdit_7.setText(str(data[3]))
-        self.textEdit_8.setText(str(data[6]))
+        self.mult1_vmon.setText(str(data[3]))
+        self.mult1_imon.setText(str(data[6]))
         self.spin_bias1_dac.setValue(int(data[9]))
-        self.textEdit_9.setText(str(data[13]))
-        self.textEdit_10.setText(str(data[16]))
+        self.mult2_vmon.setText(str(data[13]))
+        self.mult2_imon.setText(str(data[16]))
         self.spin_bias2_dac.setValue(int(data[19]))
-        self.textEdit_11.setText(str(data[23]))
-        self.textEdit_12.setText(str(data[26]))
+        self.mult3_vmon.setText(str(data[23]))
+        self.mult3_imon.setText(str(data[26]))
         self.spin_bias3_dac.setValue(int(data[29]))
 
 

@@ -52,7 +52,7 @@
        <string>CommClose</string>
       </property>
      </widget>
-     <widget class="QTextEdit" name="textEdit_2">
+     <widget class="QTextEdit" name="qcl1_imon">
       <property name="geometry">
        <rect>
         <x>127</x>
@@ -68,7 +68,7 @@
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
      </widget>
-     <widget class="QTextEdit" name="textEdit_psatv">
+     <widget class="QTextEdit" name="psatv">
       <property name="geometry">
        <rect>
         <x>460</x>
@@ -84,7 +84,7 @@
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
      </widget>
-     <widget class="QTextEdit" name="textEdit_6">
+     <widget class="QTextEdit" name="qcl3_imon">
       <property name="geometry">
        <rect>
         <x>127</x>
@@ -221,7 +221,7 @@ Unchecked=CC</string>
        <number>100</number>
       </property>
      </widget>
-     <widget class="QTextEdit" name="textEdit_7">
+     <widget class="QTextEdit" name="mult1_vmon">
       <property name="geometry">
        <rect>
         <x>460</x>
@@ -276,7 +276,7 @@ Unchecked=CC</string>
        <string>Server response</string>
       </property>
      </widget>
-     <widget class="QTextEdit" name="textEdit_30">
+     <widget class="QTextEdit" name="vcoil_I">
       <property name="geometry">
        <rect>
         <x>140</x>
@@ -337,7 +337,7 @@ Unchecked=CC</string>
        <number>100</number>
       </property>
      </widget>
-     <widget class="QTextEdit" name="textEdit_10">
+     <widget class="QTextEdit" name="mult2_imon">
       <property name="geometry">
        <rect>
         <x>520</x>
@@ -366,7 +366,7 @@ Unchecked=CC</string>
        <string>Multipiler Bias</string>
       </property>
      </widget>
-     <widget class="QTextEdit" name="textEdit_4">
+     <widget class="QTextEdit" name="qcl2_imon">
       <property name="geometry">
        <rect>
         <x>127</x>
@@ -404,7 +404,7 @@ Unchecked=CC</string>
        <number>50000</number>
       </property>
      </widget>
-     <widget class="QTextEdit" name="textEdit_5">
+     <widget class="QTextEdit" name="qcl3_vmon">
       <property name="geometry">
        <rect>
         <x>47</x>
@@ -420,7 +420,7 @@ Unchecked=CC</string>
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
      </widget>
-     <widget class="QTextEdit" name="textEdit_8">
+     <widget class="QTextEdit" name="mult1_imon">
       <property name="geometry">
        <rect>
         <x>520</x>
@@ -506,7 +506,7 @@ Unchecked=CC</string>
        <number>0</number>
       </property>
      </widget>
-     <widget class="QTextEdit" name="textEdit_11">
+     <widget class="QTextEdit" name="mult3_vmon">
       <property name="geometry">
        <rect>
         <x>460</x>
@@ -522,7 +522,7 @@ Unchecked=CC</string>
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
      </widget>
-     <widget class="QTextEdit" name="textEdit_psati">
+     <widget class="QTextEdit" name="psati">
       <property name="geometry">
        <rect>
         <x>520</x>
@@ -558,7 +558,7 @@ Unchecked=CC</string>
        <string>voice coil control</string>
       </property>
      </widget>
-     <widget class="QTextEdit" name="textEdit_9">
+     <widget class="QTextEdit" name="mult2_vmon">
       <property name="geometry">
        <rect>
         <x>460</x>
@@ -600,7 +600,7 @@ Unchecked=CC</string>
        <enum>Qt::Vertical</enum>
       </property>
      </widget>
-     <widget class="QTextEdit" name="textEdit_1">
+     <widget class="QTextEdit" name="qcl1_vmon">
       <property name="geometry">
        <rect>
         <x>47</x>
@@ -700,7 +700,7 @@ Unchecked=CC</string>
        <number>25</number>
       </property>
      </widget>
-     <widget class="QTextEdit" name="textEdit_12">
+     <widget class="QTextEdit" name="mult3_imon">
       <property name="geometry">
        <rect>
         <x>520</x>
@@ -716,7 +716,7 @@ Unchecked=CC</string>
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
      </widget>
-     <widget class="QTextEdit" name="textEdit_3">
+     <widget class="QTextEdit" name="qcl2_vmon">
       <property name="geometry">
        <rect>
         <x>47</x>
@@ -886,7 +886,7 @@ Unchecked=CC</string>
        <string>Vsense</string>
       </property>
      </widget>
-     <widget class="QTextEdit" name="textEdit_42">
+     <widget class="QTextEdit" name="qcl2_vsen">
       <property name="geometry">
        <rect>
         <x>220</x>
@@ -915,7 +915,7 @@ Unchecked=CC</string>
        <string>V</string>
       </property>
      </widget>
-     <widget class="QTextEdit" name="textEdit_41">
+     <widget class="QTextEdit" name="qcl1_vsen">
       <property name="geometry">
        <rect>
         <x>220</x>
@@ -957,7 +957,7 @@ Unchecked=CC</string>
        <string>V</string>
       </property>
      </widget>
-     <widget class="QTextEdit" name="textEdit_43">
+     <widget class="QTextEdit" name="qcl3_vsen">
       <property name="geometry">
        <rect>
         <x>220</x>
@@ -1349,7 +1349,7 @@ Unchecked=CC</string>
        <string>Temperature Status</string>
       </property>
      </widget>
-     <widget class="QTextEdit" name="textEdit_temp1">
+     <widget class="QTextEdit" name="temp1">
       <property name="geometry">
        <rect>
         <x>600</x>
@@ -1365,7 +1365,7 @@ Unchecked=CC</string>
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
      </widget>
-     <widget class="QTextEdit" name="textEdit_temp2">
+     <widget class="QTextEdit" name="temp2">
       <property name="geometry">
        <rect>
         <x>600</x>
@@ -1381,7 +1381,7 @@ Unchecked=CC</string>
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
      </widget>
-     <widget class="QTextEdit" name="textEdit_temp3">
+     <widget class="QTextEdit" name="temp3">
       <property name="geometry">
        <rect>
         <x>600</x>
@@ -1397,7 +1397,7 @@ Unchecked=CC</string>
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
      </widget>
-     <widget class="QTextEdit" name="textEdit_temp4">
+     <widget class="QTextEdit" name="temp4">
       <property name="geometry">
        <rect>
         <x>600</x>
@@ -1413,7 +1413,7 @@ Unchecked=CC</string>
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
      </widget>
-     <widget class="QTextEdit" name="textEdit_temp5">
+     <widget class="QTextEdit" name="temp5">
       <property name="geometry">
        <rect>
         <x>600</x>
@@ -1429,7 +1429,7 @@ Unchecked=CC</string>
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
      </widget>
-     <widget class="QTextEdit" name="textEdit_temp6">
+     <widget class="QTextEdit" name="temp6">
       <property name="geometry">
        <rect>
         <x>600</x>
@@ -1445,7 +1445,7 @@ Unchecked=CC</string>
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
      </widget>
-     <widget class="QTextEdit" name="textEdit_temp7">
+     <widget class="QTextEdit" name="temp7">
       <property name="geometry">
        <rect>
         <x>600</x>
@@ -1461,7 +1461,7 @@ Unchecked=CC</string>
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
      </widget>
-     <widget class="QTextEdit" name="textEdit_temp8">
+     <widget class="QTextEdit" name="temp8">
       <property name="geometry">
        <rect>
         <x>600</x>
@@ -1680,19 +1680,6 @@ Unchecked=CC</string>
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
      </widget>
-     <widget class="QLabel" name="label_11">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>260</y>
-        <width>59</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>COIL V</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_34">
       <property name="geometry">
        <rect>
@@ -1711,45 +1698,6 @@ Unchecked=CC</string>
       </property>
       <property name="text">
        <string>Outputs</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_19">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>280</y>
-        <width>59</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>HTR V</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_20">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>300</y>
-        <width>59</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>PSAT V</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_22">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>320</y>
-        <width>59</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>GATE V</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_39">
