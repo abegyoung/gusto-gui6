@@ -26,6 +26,7 @@ class MplWidget(QtWidgets.QWidget):
 		self.vbl.addWidget(self.canvas)
 		self.setLayout(self.vbl)
 		self.vbl.addWidget(self.toolbar)
+                
 
 def cursorValue(event):
 	QtGui.QApplication.setOverrideCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))

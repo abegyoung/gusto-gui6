@@ -7,8 +7,6 @@ from sys import argv, exit
 from io import StringIO
 import coreSERIAL
 
-import matplotlib
-
 from PyQt6 import QtCore, uic
 from PyQt6.QtWidgets import (
     QApplication,
