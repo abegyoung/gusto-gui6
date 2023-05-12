@@ -448,7 +448,8 @@ class Window(QMainWindow, form_class):
         voltage=float(data[1]) + float(VOffset)
         current=float(data[4])
         resistance="{:.2f}".format(1000*voltage/current)
-        self.editVoltage.setText(str(voltage))
+        #self.editVoltage.setText(str(voltage))
+        self.editVoltage.setText(str('{:.3f}'.format(voltage)))
         self.editCurrent.setText(str(current))
         self.editResistance.setText(str(resistance))
 
