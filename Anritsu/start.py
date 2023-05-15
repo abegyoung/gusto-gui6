@@ -75,7 +75,7 @@ class Window(QMainWindow, form_class):
       if enabled:
         cmd="START\n"
       Ser.write(cmd.encode())
-      data=read_end(Ser, '\n')
+      data=coreSERIAL.read_end(Ser, '\n')
       self.serverResponse.setText(str(data))
       self.serverCommand.setText("")
 
@@ -87,13 +87,13 @@ class Window(QMainWindow, form_class):
     def btn_open_clicked(self):
       global Ser
       Ser = serial.Serial(
-          port='/dev/cu.usbmodem142301',
+          port='/dev/ttyACM0',
           baudrate=19200,
           timeout=1
       )
       cmd="IDN?\n"
       Ser.write(cmd.encode())
-      data=read_end(Ser, '\n')
+      data=coreSERIAL.read_end(Ser, '\n')
       self.serverResponse.setText(str(data))
 
     def btn_close_clicked(self):
@@ -109,7 +109,7 @@ class Window(QMainWindow, form_class):
       global y
       cmd="PWR?\n"
       Ser.write(cmd.encode())
-      data=read_end(Ser, '\n').split()
+      data=coreSERIAL.read_end(Ser, '\n').split()
       self.dBm_textEdit.setText(str(float(data[0])))
       watt=(10**(float(data[0])/10))/1000
       watt_string = "{:.3e}".format(watt)
