@@ -285,10 +285,10 @@ class Window(QMainWindow, form_class):
         value = self.spin_psat_dac.value()
         cmd = "psat %d\r" % (value)
         Ser.write(cmd.encode())
-        data=coreSERIAL.read_end(Ser, '\n').split()
+        data=Ser.read(100).split()
         self.serverResponse.setText(str(data))
-        self.psatv.setText(str(float(data[2])))
-        self.psati.setText(str(float(data[5])))
+        self.psatv.setText(str(float(data[6])))
+        self.psati.setText(str(float(data[9])))
 
     def btn_qclonoff_clicked(self, enabled):
         if enabled:
@@ -326,7 +326,7 @@ class Window(QMainWindow, form_class):
         global Ser
         Ser = serial.Serial(
             #port='/Users/young/dev/vmodem2',
-            port='/dev/cu.usbmodemB3LO_CTRL1',
+            port='/dev/ttyACM0',
             baudrate=19200,
             timeout=1
         )
@@ -403,21 +403,21 @@ class Window(QMainWindow, form_class):
         cmd="temps\r"
         Ser.write(cmd.encode())
         data=coreSERIAL.read_end_multi(Ser, 'END\n').split()
-        self.temp1.setText(str(100.*float(data[1+0*2])-273))
-        self.temp2.setText(str(100.*float(data[1+1*2])-273))
-        self.temp3.setText(str(100.*float(data[1+2*2])-273))
-        self.temp4.setText(str(100.*float(data[1+3*2])-273))
-        self.temp5.setText(str(100.*float(data[1+4*2])-273))
-        self.temp6.setText(str(100.*float(data[1+5*2])-273))
-        self.temp7.setText(str(100.*float(data[1+6*2])-273))
-        self.temp8.setText(str(100.*float(data[1+7*2])-273))
+        self.temp1.setText(str(100.*float(data[1])-273))
+        self.temp2.setText(str(100.*float(data[3])-273))
+        self.temp3.setText(str(100.*float(data[5])-273))
+        self.temp4.setText(str(100.*float(data[7])-273))
+        self.temp5.setText(str(100.*float(data[9])-273))
+        self.temp6.setText(str(100.*float(data[11])-273))
+        self.temp7.setText(str(100.*float(data[13])-273))
+        self.temp8.setText(str(100.*float(data[15])-273))
 
         cmd="psat\r"
         Ser.write(cmd.encode())
-        data=coreSERIAL.read_end(Ser, '\n').split()
-        self.psatv.setText(str(float(data[2])))
-        self.psati.setText(str(float(data[5])))
-        self.spin_psat_dac.setValue(int(data[8]))
+        data=Ser.read(100).split()
+        self.psatv.setText(str(float(data[6])))
+        self.psati.setText(str(float(data[9])))
+        self.spin_psat_dac.setValue(int(data[12]))
 
         cmd="qcl\r"
         Ser.write(cmd.encode())
