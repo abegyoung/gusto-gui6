@@ -403,14 +403,14 @@ class Window(QMainWindow, form_class):
         cmd="temps\r"
         Ser.write(cmd.encode())
         data=coreSERIAL.read_end_multi(Ser, 'END\n').split()
-        self.temp1.setText(str(100.*float(data[1])-273))
-        self.temp2.setText(str(100.*float(data[3])-273))
-        self.temp3.setText(str(100.*float(data[5])-273))
-        self.temp4.setText(str(100.*float(data[7])-273))
-        self.temp5.setText(str(100.*float(data[9])-273))
-        self.temp6.setText(str(100.*float(data[11])-273))
-        self.temp7.setText(str(100.*float(data[13])-273))
-        self.temp8.setText(str(100.*float(data[15])-273))
+        self.temp1.setText(str(data[1]))
+        self.temp2.setText(str(data[3]))
+        self.temp3.setText(str(data[5]))
+        self.temp4.setText(str(data[7]))
+        self.temp5.setText(str(data[9]))
+        self.temp6.setText(str(data[11]))
+        self.temp7.setText(str(data[13]))
+        self.temp8.setText(str(data[15]))
 
         cmd="psat\r"
         Ser.write(cmd.encode())
