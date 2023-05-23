@@ -285,10 +285,10 @@ class Window(QMainWindow, form_class):
         value = self.spin_psat_dac.value()
         cmd = "psat %d\r" % (value)
         Ser.write(cmd.encode())
-        data=Ser.read(100).split()
+        data=coreSERIAL.read_end(Ser, '\n', 2).split()
         self.serverResponse.setText(str(data))
-        self.psatv.setText(str(float(data[6])))
-        self.psati.setText(str(float(data[9])))
+        self.psatv.setText(str(float(data[5])))
+        self.psati.setText(str(float(data[8])))
 
     def btn_qclonoff_clicked(self, enabled):
         if enabled:
@@ -384,7 +384,6 @@ class Window(QMainWindow, form_class):
 
         #fill the tuple with data
         v = Volts._make(datan[1::2])
-        print(v)
 
         self.rail_val_0.setText(str(v.p5V_REF_MON))
         self.rail_val_1.setText(str(v.n36V_MON_BUF))

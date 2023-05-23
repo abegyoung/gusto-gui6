@@ -1,4 +1,8 @@
-def read_end(the_port, End):
+def read_end(the_port, End, *args):
+  num=1
+  if args:
+    num=args[0]
+  repeat=-1
   total_data=[];data=''
   while True:
     try:
@@ -7,7 +11,9 @@ def read_end(the_port, End):
       break
     if End in data:
       total_data.append(data[:data.find(End)])
-      break
+      repeat=repeat+1
+      if repeat==num:
+        break
     total_data.append(data)
     if len(total_data)>1:
       # check if end_of_data was split
@@ -15,7 +21,9 @@ def read_end(the_port, End):
       if End in last_pair:
         total_data[-2]=last_pair[:last_pair.find(End)]
         total_data.pop()
-        break
+        repeat=repeat+1
+        if repeat==num:
+          break
   return ''.join(total_data)
 
 
