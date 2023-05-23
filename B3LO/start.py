@@ -367,10 +367,10 @@ class Window(QMainWindow, form_class):
     def btn_refresh_clicked(self):
 
         # GET DATA
-        cmd="voltages\r"
+        cmd="status slow\r"
         Ser.write(cmd.encode())
         data=coreSERIAL.read_end_multi(Ser, 'END\n').split()
-        N=28
+        N=68*2
 
         # translate +/- to p/n
         datan=[None]*N
@@ -384,6 +384,7 @@ class Window(QMainWindow, form_class):
 
         #fill the tuple with data
         v = Volts._make(datan[1::2])
+        print(v)
 
         self.rail_val_0.setText(str(v.p5V_REF_MON))
         self.rail_val_1.setText(str(v.n36V_MON_BUF))
@@ -400,64 +401,41 @@ class Window(QMainWindow, form_class):
         self.out_val_i_1.setText(str(v.QCL_HTR_I))
         self.out_val_i_2.setText(str(v.PSAT_Imon))
 
-        cmd="temps\r"
-        Ser.write(cmd.encode())
-        data=coreSERIAL.read_end_multi(Ser, 'END\n').split()
-        self.temp1.setText(str(data[1]))
-        self.temp2.setText(str(data[3]))
-        self.temp3.setText(str(data[5]))
-        self.temp4.setText(str(data[7]))
-        self.temp5.setText(str(data[9]))
-        self.temp6.setText(str(data[11]))
-        self.temp7.setText(str(data[13]))
-        self.temp8.setText(str(data[15]))
+        self.temp1.setText(str(v.B3_AD590_0))
+        self.temp2.setText(str(v.B3_AD590_1))
+        self.temp3.setText(str(v.B3_AD590_2))
+        self.temp4.setText(str(v.B3_AD590_3))
+        self.temp5.setText(str(v.B3_AD590_4))
+        self.temp6.setText(str(v.B3_AD590_5))
+        self.temp7.setText(str(v.B3_AD590_6))
+        self.temp8.setText(str(v.B3_AD590_7))
 
-        cmd="psat\r"
-        Ser.write(cmd.encode())
-        data=Ser.read(100).split()
-        self.psatv.setText(str(float(data[6])))
-        self.psati.setText(str(float(data[9])))
-        self.spin_psat_dac.setValue(int(data[12]))
+        self.psatv.setText(str(v.B3_PSatV))
+        self.psati.setText(str(v.B3_PSatV))
+        self.spin_psat_dac.setValue(int(v.B3_PSatDac))
 
-        cmd="qcl\r"
-        Ser.write(cmd.encode())
-        data=coreSERIAL.read_end_multi(Ser, 'END\n').split()
-        self.qcl1_vmon.setText( str(float(data[3])))   #QCL 1 V
-        self.qcl1_imon.setText( str(float(data[6])))   #QCL 1 I
-        self.qcl1_vsen.setText(str(float(data[9])))   #QCL 1 Vsense
-        self.qcl2_vmon.setText( str(float(data[13])))  #QCL 2 V
-        self.qcl2_imon.setText( str(float(data[16])))  #QCL 2 I
-        self.qcl2_vsen.setText(str(float(data[19])))  #QCL 2 Vsense
-        self.qcl3_vmon.setText( str(float(data[23])))  #QCL 3 V
-        self.qcl3_imon.setText( str(float(data[26])))  #QCL 3 I
-        self.qcl3_vsen.setText(str(float(data[29])))  #QCL 3 Vsense
+        self.qcl1_vmon.setText(str(v.QCL1_Vout))
+        self.qcl1_imon.setText(str(v.QCL1_Imon))
+        self.qcl1_vsen.setText(str(v.QCL1_Vsen))
+        self.spin_qcl1_dac.setValue(int(v.QCL1_DAC))
+        self.qcl2_vmon.setText(str(v.QCL2_Vout))
+        self.qcl2_imon.setText(str(v.QCL2_Imon))
+        self.qcl2_vsen.setText(str(v.QCL2_Vsen))
+        self.spin_qcl2_dac.setValue(int(v.QCL2_DAC))
+        self.qcl3_vmon.setText(str(v.QCL3_Vout))
+        self.qcl3_imon.setText(str(v.QCL3_Imon))
+        self.qcl3_vsen.setText(str(v.QCL3_Vsen))
+        self.spin_qcl3_dac.setValue(int(v.QCL3_DAC))
 
-        cmd="qcl 1\r"
-        Ser.write(cmd.encode())
-        data=coreSERIAL.read_end(Ser, '\n').split()
-        self.spin_qcl1_dac.setValue(int(data[5]))
-        cmd="qcl 2\r"
-        Ser.write(cmd.encode())
-        data=coreSERIAL.read_end(Ser, '\n').split()
-        self.spin_qcl2_dac.setValue(int(data[5]))
-        cmd="qcl 3\r"
-        Ser.write(cmd.encode())
-        data=coreSERIAL.read_end(Ser, '\n').split()
-        self.spin_qcl3_dac.setValue(int(data[5]))
-
-        cmd="mult\r"
-        Ser.write(cmd.encode())
-        data=coreSERIAL.read_end_multi(Ser, 'END\n').split()
-        self.serverResponse.setText(str(data))
-        self.mult1_vmon.setText(str(data[3]))
-        self.mult1_imon.setText(str(data[6]))
-        self.spin_bias1_dac.setValue(int(data[9]))
-        self.mult2_vmon.setText(str(data[13]))
-        self.mult2_imon.setText(str(data[16]))
-        self.spin_bias2_dac.setValue(int(data[19]))
-        self.mult3_vmon.setText(str(data[23]))
-        self.mult3_imon.setText(str(data[26]))
-        self.spin_bias3_dac.setValue(int(data[29]))
+        self.mult1_vmon.setText(str(v.B3_MULT1_V))
+        self.mult1_imon.setText(str(v.B3_MULT1_I))
+        self.spin_bias1_dac.setValue(int(v.B3_MULT1_bits))
+        self.mult2_vmon.setText(str(v.B3_MULT2_V))
+        self.mult2_imon.setText(str(v.B3_MULT2_I))
+        self.spin_bias2_dac.setValue(int(v.B3_MULT2_bits))
+        self.mult3_vmon.setText(str(v.B3_MULT3_V))
+        self.mult3_imon.setText(str(v.B3_MULT3_I))
+        self.spin_bias3_dac.setValue(int(v.B3_MULT3_bits))
 
 
     ### PID AMP TAB ###
