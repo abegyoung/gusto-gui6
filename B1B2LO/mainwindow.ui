@@ -27,7 +27,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <property name="movable">
      <bool>false</bool>
@@ -2121,9 +2121,9 @@
      <widget class="QTextEdit" name="textEdit_29">
       <property name="geometry">
        <rect>
-        <x>710</x>
+        <x>700</x>
         <y>160</y>
-        <width>61</width>
+        <width>71</width>
         <height>21</height>
        </rect>
       </property>
@@ -6046,9 +6046,9 @@
      <widget class="QTextEdit" name="textEdit_31">
       <property name="geometry">
        <rect>
-        <x>710</x>
+        <x>700</x>
         <y>220</y>
-        <width>61</width>
+        <width>71</width>
         <height>21</height>
        </rect>
       </property>
@@ -6727,9 +6727,9 @@
      <widget class="QTextEdit" name="textEdit_30">
       <property name="geometry">
        <rect>
-        <x>710</x>
+        <x>700</x>
         <y>190</y>
-        <width>61</width>
+        <width>71</width>
         <height>21</height>
        </rect>
       </property>
@@ -7999,9 +7999,9 @@
      <widget class="QTextEdit" name="textEdit_25">
       <property name="geometry">
        <rect>
-        <x>710</x>
+        <x>700</x>
         <y>46</y>
-        <width>61</width>
+        <width>71</width>
         <height>21</height>
        </rect>
       </property>
@@ -8483,9 +8483,9 @@
      <widget class="QTextEdit" name="textEdit_26">
       <property name="geometry">
        <rect>
-        <x>710</x>
+        <x>700</x>
         <y>76</y>
-        <width>61</width>
+        <width>71</width>
         <height>21</height>
        </rect>
       </property>
@@ -9732,9 +9732,9 @@
      <widget class="QTextEdit" name="textEdit_27">
       <property name="geometry">
        <rect>
-        <x>710</x>
+        <x>700</x>
         <y>106</y>
-        <width>61</width>
+        <width>71</width>
         <height>21</height>
        </rect>
       </property>
@@ -10670,9 +10670,9 @@
      <widget class="QTextEdit" name="textEdit_32">
       <property name="geometry">
        <rect>
-        <x>710</x>
+        <x>700</x>
         <y>250</y>
-        <width>61</width>
+        <width>71</width>
         <height>21</height>
        </rect>
       </property>
@@ -18628,9 +18628,9 @@
      <widget class="QTextEdit" name="textEdit_28">
       <property name="geometry">
        <rect>
-        <x>710</x>
+        <x>700</x>
         <y>130</y>
-        <width>61</width>
+        <width>71</width>
         <height>21</height>
        </rect>
       </property>
@@ -24797,8 +24797,8 @@
      <widget class="QCheckBox" name="dcdc2">
       <property name="geometry">
        <rect>
-        <x>70</x>
-        <y>176</y>
+        <x>40</x>
+        <y>86</y>
         <width>171</width>
         <height>23</height>
        </rect>
@@ -24810,8 +24810,8 @@
      <widget class="QCheckBox" name="dcdc5">
       <property name="geometry">
        <rect>
-        <x>70</x>
-        <y>263</y>
+        <x>40</x>
+        <y>173</y>
         <width>99</width>
         <height>23</height>
        </rect>
@@ -24823,8 +24823,8 @@
      <widget class="QCheckBox" name="dcdc4">
       <property name="geometry">
        <rect>
-        <x>70</x>
-        <y>234</y>
+        <x>40</x>
+        <y>144</y>
         <width>141</width>
         <height>23</height>
        </rect>
@@ -24836,8 +24836,8 @@
      <widget class="QCheckBox" name="dcdc7">
       <property name="geometry">
        <rect>
-        <x>70</x>
-        <y>321</y>
+        <x>40</x>
+        <y>231</y>
         <width>99</width>
         <height>23</height>
        </rect>
@@ -24849,8 +24849,8 @@
      <widget class="QCheckBox" name="dcdc3">
       <property name="geometry">
        <rect>
-        <x>70</x>
-        <y>205</y>
+        <x>40</x>
+        <y>115</y>
         <width>161</width>
         <height>23</height>
        </rect>
@@ -24862,8 +24862,8 @@
      <widget class="QCheckBox" name="dcdc6">
       <property name="geometry">
        <rect>
-        <x>70</x>
-        <y>292</y>
+        <x>40</x>
+        <y>202</y>
         <width>99</width>
         <height>23</height>
        </rect>
@@ -24875,8 +24875,8 @@
      <widget class="QCheckBox" name="dcdc8">
       <property name="geometry">
        <rect>
-        <x>70</x>
-        <y>350</y>
+        <x>40</x>
+        <y>260</y>
         <width>191</width>
         <height>23</height>
        </rect>
@@ -24886,10 +24886,13 @@
       </property>
      </widget>
      <widget class="QCheckBox" name="dcdc1">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="geometry">
        <rect>
-        <x>70</x>
-        <y>147</y>
+        <x>40</x>
+        <y>57</y>
         <width>211</width>
         <height>23</height>
        </rect>
@@ -24898,14 +24901,14 @@
        <string>DCDC 1 Multiplier Disable</string>
       </property>
       <property name="checked">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QTextEdit" name="textEdit_21c">
       <property name="geometry">
        <rect>
-        <x>370</x>
-        <y>340</y>
+        <x>380</x>
+        <y>110</y>
         <width>51</width>
         <height>21</height>
        </rect>
@@ -24920,8 +24923,8 @@
      <widget class="QLabel" name="label_32">
       <property name="geometry">
        <rect>
-        <x>440</x>
-        <y>320</y>
+        <x>330</x>
+        <y>150</y>
         <width>59</width>
         <height>16</height>
        </rect>
@@ -24933,8 +24936,8 @@
      <widget class="QLabel" name="label_33">
       <property name="geometry">
        <rect>
-        <x>440</x>
-        <y>340</y>
+        <x>330</x>
+        <y>170</y>
         <width>59</width>
         <height>16</height>
        </rect>
@@ -24946,8 +24949,8 @@
      <widget class="QTextEdit" name="textEdit_19c">
       <property name="geometry">
        <rect>
-        <x>370</x>
-        <y>300</y>
+        <x>380</x>
+        <y>70</y>
         <width>51</width>
         <height>21</height>
        </rect>
@@ -24962,8 +24965,8 @@
      <widget class="QTextEdit" name="textEdit_23c">
       <property name="geometry">
        <rect>
-        <x>490</x>
-        <y>320</y>
+        <x>380</x>
+        <y>150</y>
         <width>51</width>
         <height>21</height>
        </rect>
@@ -24978,8 +24981,8 @@
      <widget class="QLabel" name="label_34">
       <property name="geometry">
        <rect>
-        <x>320</x>
-        <y>300</y>
+        <x>330</x>
+        <y>70</y>
         <width>59</width>
         <height>16</height>
        </rect>
@@ -24991,8 +24994,8 @@
      <widget class="QTextEdit" name="textEdit_24c">
       <property name="geometry">
        <rect>
-        <x>490</x>
-        <y>340</y>
+        <x>380</x>
+        <y>170</y>
         <width>51</width>
         <height>21</height>
        </rect>
@@ -25007,8 +25010,8 @@
      <widget class="QLabel" name="label_35">
       <property name="geometry">
        <rect>
-        <x>320</x>
-        <y>320</y>
+        <x>330</x>
+        <y>90</y>
         <width>59</width>
         <height>16</height>
        </rect>
@@ -25020,8 +25023,8 @@
      <widget class="QTextEdit" name="textEdit_20c">
       <property name="geometry">
        <rect>
-        <x>370</x>
-        <y>320</y>
+        <x>380</x>
+        <y>90</y>
         <width>51</width>
         <height>21</height>
        </rect>
@@ -25036,8 +25039,8 @@
      <widget class="QLabel" name="label_36">
       <property name="geometry">
        <rect>
-        <x>320</x>
-        <y>340</y>
+        <x>330</x>
+        <y>110</y>
         <width>59</width>
         <height>16</height>
        </rect>
@@ -25049,8 +25052,8 @@
      <widget class="QLabel" name="label_37">
       <property name="geometry">
        <rect>
-        <x>440</x>
-        <y>300</y>
+        <x>330</x>
+        <y>130</y>
         <width>59</width>
         <height>16</height>
        </rect>
@@ -25062,8 +25065,8 @@
      <widget class="QTextEdit" name="textEdit_22c">
       <property name="geometry">
        <rect>
-        <x>490</x>
-        <y>300</y>
+        <x>380</x>
+        <y>130</y>
         <width>51</width>
         <height>21</height>
        </rect>
@@ -25263,8 +25266,164 @@
       <property name="geometry">
        <rect>
         <x>660</x>
-        <y>30</y>
+        <y>20</y>
+        <width>211</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Temp assignments B2LO</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_40">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>20</y>
         <width>181</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>DCDC control</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_41">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>20</y>
+        <width>181</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Voltage Status</string>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEdit_24c_2">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>170</y>
+        <width>51</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEdit_21c_2">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>110</y>
+        <width>51</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEdit_23c_2">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>150</y>
+        <width>51</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEdit_22c_2">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>130</y>
+        <width>51</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEdit_19c_2">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>70</y>
+        <width>51</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEdit_20c_2">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>90</y>
+        <width>51</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_45">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>50</y>
+        <width>141</width>
         <height>17</height>
        </rect>
       </property>
@@ -25275,7 +25434,97 @@
        </font>
       </property>
       <property name="text">
-       <string>Temp assignments B2LO</string>
+       <string>Volts              mAmps</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_46">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>190</y>
+        <width>59</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>3.3V</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_47">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>210</y>
+        <width>59</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>15V</string>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEdit_25c">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>190</y>
+        <width>51</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEdit_25c_2">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>190</y>
+        <width>51</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEdit_26c">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>210</y>
+        <width>51</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEdit_26c_2">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>210</y>
+        <width>51</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
      </widget>
     </widget>
