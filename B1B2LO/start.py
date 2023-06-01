@@ -164,6 +164,21 @@ class Window(QMainWindow, form_class):
         self.textEdit_23.setText(str(v.nV_ANA_MON_BUF))   #-9Vana
         self.textEdit_24.setText(str(v.p5V_ANA_MON))      #5V
 
+        self.textEdit_19c.setText(  str(v.n36V_MON_BUF))     #V36
+        self.textEdit_19c_2.setText(str(v.n36V_Imon))        #V36 current
+        self.textEdit_20c.setText(  str(v.nSPARE_MON_BUF))   #V18
+        self.textEdit_21c.setText(  str(v.p5V_ANA_MON))      #5Vana
+        self.textEdit_21c_2.setText(str(v.p5V_ANA_Imon))     #5Vana current
+        self.textEdit_22c.setText(  str(v.pV_ANA_MON))       #+9Vana
+        self.textEdit_22c_2.setText(str(v.p9V_ANA_Imon))     #+9Vana current
+        self.textEdit_23c.setText(  str(v.nV_ANA_MON_BUF))   #-9Vana
+        self.textEdit_23c_2.setText(str(v.n9V_ANA_Imon))     #-9Vana current
+        self.textEdit_24c.setText(  str(v.p5V_ANA_MON))      #5V
+        self.textEdit_24c_2.setText(str(v.p5V_ANA_Imon))     #5V current
+
+        self.textEdit_25c.setText(  str(v.SBC_3p3V))      #3.3V
+        self.textEdit_26c_2.setText(str(v.p15V_Imon))     #15V synth current
+
         self.textEdit_AD590_0.setText(str(v.B2_AD590_0))  #AD590_0
         self.textEdit_AD590_1.setText(str(v.B2_AD590_1))  #AD590_1
         self.textEdit_AD590_2.setText(str(v.B2_AD590_2))  #AD590_2
