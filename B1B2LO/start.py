@@ -164,69 +164,69 @@ class Window(QMainWindow, form_class):
         self.textEdit_23.setText(str(v.nV_ANA_MON_BUF))   #-9Vana
         self.textEdit_24.setText(str(v.p5V_ANA_MON))      #5V
 
-        self.textEdit_AD590_0.setText(str(v.B1_AD590_0))  #AD590_0
-        self.textEdit_AD590_1.setText(str(v.B1_AD590_1))  #AD590_1
-        self.textEdit_AD590_2.setText(str(v.B1_AD590_2))  #AD590_2
-        self.textEdit_AD590_3.setText(str(v.B1_AD590_3))  #AD590_3
-        self.textEdit_AD590_4.setText(str(v.B1_AD590_4))  #AD590_4
-        self.textEdit_AD590_5.setText(str(v.B1_AD590_5))  #AD590_5
-        self.textEdit_AD590_6.setText(str(v.B1_AD590_6))  #AD590_6
-        self.textEdit_AD590_7.setText(str(v.B1_AD590_7))  #AD590_7
+        self.textEdit_AD590_0.setText(str(v.B2_AD590_0))  #AD590_0
+        self.textEdit_AD590_1.setText(str(v.B2_AD590_1))  #AD590_1
+        self.textEdit_AD590_2.setText(str(v.B2_AD590_2))  #AD590_2
+        self.textEdit_AD590_3.setText(str(v.B2_AD590_3))  #AD590_3
+        self.textEdit_AD590_4.setText(str(v.B2_AD590_4))  #AD590_4
+        self.textEdit_AD590_5.setText(str(v.B2_AD590_5))  #AD590_5
+        self.textEdit_AD590_6.setText(str(v.B2_AD590_6))  #AD590_6
+        self.textEdit_AD590_7.setText(str(v.B2_AD590_7))  #AD590_7
 
-        self.textEdit_38.setText(str(v.B1_AD590_8))       #internal AD590 #1
-        self.textEdit_39.setText(str(v.B1_AD590_9))       #internal AD590 #2
-        self.textEdit_40.setText(str(v.B1_AD590_10))      #internal AD590 #3
+        self.textEdit_38.setText(str(v.B2_AD590_8))       #internal AD590 #1
+        self.textEdit_39.setText(str(v.B2_AD590_9))       #internal AD590 #2
+        self.textEdit_40.setText(str(v.B2_AD590_10))      #internal AD590 #3
 
-        self.Pix1_Stg1_Vmon.setText(str(v.B1_MultV_1))
-        self.Pix1_Stg1_Imon.setText(str(v.B1_MultI_1))
-        self.Pix2_Stg1_Vmon.setText(str(v.B1_MultV_2))
-        self.Pix2_Stg1_Imon.setText(str(v.B1_MultI_2))
-        self.Pix3_Stg1_Vmon.setText(str(v.B1_MultV_3))
-        self.Pix3_Stg1_Imon.setText(str(v.B1_MultI_3))
-        self.Pix4_Stg1_Vmon.setText(str(v.B1_MultV_4))
-        self.Pix4_Stg1_Imon.setText(str(v.B1_MultI_4))
-        self.Pix5_Stg1_Vmon.setText(str(v.B1_MultV_5))
-        self.Pix5_Stg1_Imon.setText(str(v.B1_MultI_5))
-        self.Pix6_Stg1_Vmon.setText(str(v.B1_MultV_6))
-        self.Pix6_Stg1_Imon.setText(str(v.B1_MultI_6))
-        self.Pix7_Stg1_Vmon.setText(str(v.B1_MultV_7))
-        self.Pix7_Stg1_Imon.setText(str(v.B1_MultI_7))
-        self.Pix8_Stg1_Vmon.setText(str(v.B1_MultV_8))
-        self.Pix8_Stg1_Imon.setText(str(v.B1_MultI_8))
+        self.Pix1_Stg1_Vmon.setText(str(v.B2_MultV_1))
+        self.Pix1_Stg1_Imon.setText(str(v.B2_MultI_1))
+        self.Pix2_Stg1_Vmon.setText(str(v.B2_MultV_2))
+        self.Pix2_Stg1_Imon.setText(str(v.B2_MultI_2))
+        self.Pix3_Stg1_Vmon.setText(str(v.B2_MultV_3))
+        self.Pix3_Stg1_Imon.setText(str(v.B2_MultI_3))
+        self.Pix4_Stg1_Vmon.setText(str(v.B2_MultV_4))
+        self.Pix4_Stg1_Imon.setText(str(v.B2_MultI_4))
+        self.Pix5_Stg1_Vmon.setText(str(v.B2_MultV_5))
+        self.Pix5_Stg1_Imon.setText(str(v.B2_MultI_5))
+        self.Pix6_Stg1_Vmon.setText(str(v.B2_MultV_6))
+        self.Pix6_Stg1_Imon.setText(str(v.B2_MultI_6))
+        self.Pix7_Stg1_Vmon.setText(str(v.B2_MultV_7))
+        self.Pix7_Stg1_Imon.setText(str(v.B2_MultI_7))
+        self.Pix8_Stg1_Vmon.setText(str(v.B2_MultV_8))
+        self.Pix8_Stg1_Imon.setText(str(v.B2_MultI_8))
 
-        self.Pix1_Stg2_Vmon.setText(str(v.B1_MultV_9))
-        self.Pix1_Stg2_Imon.setText(str(v.B1_MultI_9))
-        self.Pix2_Stg2_Vmon.setText(str(v.B1_MultV_10))
-        self.Pix2_Stg2_Imon.setText(str(v.B1_MultI_10))
-        self.Pix3_Stg2_Vmon.setText(str(v.B1_MultV_11))
-        self.Pix3_Stg2_Imon.setText(str(v.B1_MultI_11))
-        self.Pix4_Stg2_Vmon.setText(str(v.B1_MultV_12))
-        self.Pix4_Stg2_Imon.setText(str(v.B1_MultI_12))
-        self.Pix5_Stg2_Vmon.setText(str(v.B1_MultV_13))
-        self.Pix5_Stg2_Imon.setText(str(v.B1_MultI_13))
-        self.Pix6_Stg2_Vmon.setText(str(v.B1_MultV_14))
-        self.Pix6_Stg2_Imon.setText(str(v.B1_MultI_14))
-        self.Pix7_Stg2_Vmon.setText(str(v.B1_MultV_15))
-        self.Pix7_Stg2_Imon.setText(str(v.B1_MultI_15))
-        self.Pix8_Stg2_Vmon.setText(str(v.B1_MultV_16))
-        self.Pix8_Stg2_Imon.setText(str(v.B1_MultI_16))
+        self.Pix1_Stg2_Vmon.setText(str(v.B2_MultV_9))
+        self.Pix1_Stg2_Imon.setText(str(v.B2_MultI_9))
+        self.Pix2_Stg2_Vmon.setText(str(v.B2_MultV_10))
+        self.Pix2_Stg2_Imon.setText(str(v.B2_MultI_10))
+        self.Pix3_Stg2_Vmon.setText(str(v.B2_MultV_11))
+        self.Pix3_Stg2_Imon.setText(str(v.B2_MultI_11))
+        self.Pix4_Stg2_Vmon.setText(str(v.B2_MultV_12))
+        self.Pix4_Stg2_Imon.setText(str(v.B2_MultI_12))
+        self.Pix5_Stg2_Vmon.setText(str(v.B2_MultV_13))
+        self.Pix5_Stg2_Imon.setText(str(v.B2_MultI_13))
+        self.Pix6_Stg2_Vmon.setText(str(v.B2_MultV_14))
+        self.Pix6_Stg2_Imon.setText(str(v.B2_MultI_14))
+        self.Pix7_Stg2_Vmon.setText(str(v.B2_MultV_15))
+        self.Pix7_Stg2_Imon.setText(str(v.B2_MultI_15))
+        self.Pix8_Stg2_Vmon.setText(str(v.B2_MultV_16))
+        self.Pix8_Stg2_Imon.setText(str(v.B2_MultI_16))
 
-        self.Pix1_Stg3_Vmon.setText(str(v.B1_MultV_17))
-        self.Pix1_Stg3_Imon.setText(str(v.B1_MultI_17))
-        self.Pix2_Stg3_Vmon.setText(str(v.B1_MultV_18))
-        self.Pix2_Stg3_Imon.setText(str(v.B1_MultI_18))
-        self.Pix3_Stg3_Vmon.setText(str(v.B1_MultV_19))
-        self.Pix3_Stg3_Imon.setText(str(v.B1_MultI_19))
-        self.Pix4_Stg3_Vmon.setText(str(v.B1_MultV_20))
-        self.Pix4_Stg3_Imon.setText(str(v.B1_MultI_20))
-        self.Pix5_Stg3_Vmon.setText(str(v.B1_MultV_21))
-        self.Pix5_Stg3_Imon.setText(str(v.B1_MultI_21))
-        self.Pix6_Stg3_Vmon.setText(str(v.B1_MultV_22))
-        self.Pix6_Stg3_Imon.setText(str(v.B1_MultI_22))
-        self.Pix7_Stg3_Vmon.setText(str(v.B1_MultV_23))
-        self.Pix7_Stg3_Imon.setText(str(v.B1_MultI_23))
-        self.Pix8_Stg3_Vmon.setText(str(v.B1_MultV_24))
-        self.Pix8_Stg3_Imon.setText(str(v.B1_MultI_24))
+        self.Pix1_Stg3_Vmon.setText(str(v.B2_MultV_17))
+        self.Pix1_Stg3_Imon.setText(str(v.B2_MultI_17))
+        self.Pix2_Stg3_Vmon.setText(str(v.B2_MultV_18))
+        self.Pix2_Stg3_Imon.setText(str(v.B2_MultI_18))
+        self.Pix3_Stg3_Vmon.setText(str(v.B2_MultV_19))
+        self.Pix3_Stg3_Imon.setText(str(v.B2_MultI_19))
+        self.Pix4_Stg3_Vmon.setText(str(v.B2_MultV_20))
+        self.Pix4_Stg3_Imon.setText(str(v.B2_MultI_20))
+        self.Pix5_Stg3_Vmon.setText(str(v.B2_MultV_21))
+        self.Pix5_Stg3_Imon.setText(str(v.B2_MultI_21))
+        self.Pix6_Stg3_Vmon.setText(str(v.B2_MultV_22))
+        self.Pix6_Stg3_Imon.setText(str(v.B2_MultI_22))
+        self.Pix7_Stg3_Vmon.setText(str(v.B2_MultV_23))
+        self.Pix7_Stg3_Imon.setText(str(v.B2_MultI_23))
+        self.Pix8_Stg3_Vmon.setText(str(v.B2_MultV_24))
+        self.Pix8_Stg3_Imon.setText(str(v.B2_MultI_24))
 
         self.spin1_1.blockSignals(True)
         self.spin1_1.setValue(str(v.B2_DAC_1))
