@@ -141,7 +141,7 @@ class Window(QMainWindow, form_class):
         cmd="status slow\r"
         Ser.write(cmd.encode())
         data=coreSERIAL.read_end_multi(Ser, 'END\n').split()
-        N=127*2
+        N=len(data)
 
         # translate +/- to p/n
         datan=[None]*N
@@ -176,8 +176,9 @@ class Window(QMainWindow, form_class):
         self.textEdit_24c.setText(  str(v.p5V_ANA_MON))      #5V
         self.textEdit_24c_2.setText(str(v.p5V_ANA_Imon))     #5V current
 
-        self.textEdit_25c.setText(  str(v.SBC_3p3V))      #3.3V
-        self.textEdit_26c_2.setText(str(v.p15V_Imon))     #15V synth current
+        self.textEdit_25c.setText(  str(v.SBC_3p3V))        #3.3V SBC 
+        self.textEdit_26c_2.setText(str(v.p15V_Imon))       #15V synth current
+        self.textEdit_27c_2.setText(str(v.p5V_SYNTH_Imon))  #5V synth current
 
         self.textEdit_AD590_0.setText(str(v.B2_AD590_0))  #AD590_0
         self.textEdit_AD590_1.setText(str(v.B2_AD590_1))  #AD590_1
@@ -317,6 +318,68 @@ class Window(QMainWindow, form_class):
         self.spin3_8.blockSignals(True)
         self.spin3_8.setValue(int(v.B2_DAC_24))
         self.spin3_8.blockSignals(False)
+
+        self.dcdc1.blockSignals(True)
+        self.dcdc1.setChecked(int(v.B2_dcdc_1))
+        self.dcdc1.blockSignals(False)
+        self.dcdc2.blockSignals(True)
+        self.dcdc2.setChecked(int(v.B2_dcdc_2))
+        self.dcdc2.blockSignals(False)
+        self.dcdc3.blockSignals(True)
+        self.dcdc3.setChecked(int(v.B2_dcdc_3))
+        self.dcdc3.blockSignals(False)
+        self.dcdc4.blockSignals(True)
+        self.dcdc4.setChecked(int(v.B2_dcdc_4))
+        self.dcdc4.blockSignals(False)
+        self.dcdc5.blockSignals(True)
+        self.dcdc5.setChecked(int(v.B2_dcdc_5))
+        self.dcdc5.blockSignals(False)
+        self.dcdc6.blockSignals(True)
+        self.dcdc6.setChecked(int(v.B2_dcdc_6))
+        self.dcdc6.blockSignals(False)
+        self.dcdc7.blockSignals(True)
+        self.dcdc7.setChecked(int(v.B2_dcdc_7))
+        self.dcdc7.blockSignals(False)
+        self.dcdc8.blockSignals(True)
+        self.dcdc8.setChecked(int(v.B2_dcdc_8))
+        self.dcdc8.blockSignals(False)
+
+        self.textEdit_25.setText(str(v.B2_PSatV_1))
+        self.textEdit_26.setText(str(v.B2_PSatV_2))
+        self.textEdit_27.setText(str(v.B2_PSatV_3))
+        self.textEdit_28.setText(str(v.B2_PSatV_4))
+        self.textEdit_29.setText(str(v.B2_PSatV_5))
+        self.textEdit_30.setText(str(v.B2_PSatV_6))
+        self.textEdit_31.setText(str(v.B2_PSatV_7))
+        self.textEdit_32.setText(str(v.B2_PSatV_8))
+
+        self.spin_psat_dac_1.blockSignals(True)
+        self.spin_psat_dac_1.setValue(int(v.B2_PSatDac_1))
+        self.spin_psat_dac_1.blockSignals(False)
+        self.spin_psat_dac_2.blockSignals(True)
+        self.spin_psat_dac_2.setValue(int(v.B2_PSatDac_2))
+        self.spin_psat_dac_2.blockSignals(False)
+        self.spin_psat_dac_3.blockSignals(True)
+        self.spin_psat_dac_3.setValue(int(v.B2_PSatDac_3))
+        self.spin_psat_dac_3.blockSignals(False)
+        self.spin_psat_dac_4.blockSignals(True)
+        self.spin_psat_dac_4.setValue(int(v.B2_PSatDac_4))
+        self.spin_psat_dac_4.blockSignals(False)
+        self.spin_psat_dac_5.blockSignals(True)
+        self.spin_psat_dac_5.setValue(int(v.B2_PSatDac_5))
+        self.spin_psat_dac_5.blockSignals(False)
+        self.spin_psat_dac_6.blockSignals(True)
+        self.spin_psat_dac_6.setValue(int(v.B2_PSatDac_6))
+        self.spin_psat_dac_6.blockSignals(False)
+        self.spin_psat_dac_7.blockSignals(True)
+        self.spin_psat_dac_7.setValue(int(v.B2_PSatDac_7))
+        self.spin_psat_dac_7.blockSignals(False)
+        self.spin_psat_dac_8.blockSignals(True)
+        self.spin_psat_dac_8.setValue(int(v.B2_PSatDac_8))
+        self.spin_psat_dac_8.blockSignals(False)
+
+        self.serverResponse.setText("Status done!")
+
 
 
     def update_pid(self):
