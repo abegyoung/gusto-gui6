@@ -24923,7 +24923,7 @@
      <widget class="QLabel" name="label_32">
       <property name="geometry">
        <rect>
-        <x>330</x>
+        <x>320</x>
         <y>150</y>
         <width>59</width>
         <height>16</height>
@@ -24936,7 +24936,7 @@
      <widget class="QLabel" name="label_33">
       <property name="geometry">
        <rect>
-        <x>330</x>
+        <x>320</x>
         <y>170</y>
         <width>59</width>
         <height>16</height>
@@ -24981,7 +24981,7 @@
      <widget class="QLabel" name="label_34">
       <property name="geometry">
        <rect>
-        <x>330</x>
+        <x>320</x>
         <y>70</y>
         <width>59</width>
         <height>16</height>
@@ -25010,7 +25010,7 @@
      <widget class="QLabel" name="label_35">
       <property name="geometry">
        <rect>
-        <x>330</x>
+        <x>320</x>
         <y>90</y>
         <width>59</width>
         <height>16</height>
@@ -25039,7 +25039,7 @@
      <widget class="QLabel" name="label_36">
       <property name="geometry">
        <rect>
-        <x>330</x>
+        <x>320</x>
         <y>110</y>
         <width>59</width>
         <height>16</height>
@@ -25052,7 +25052,7 @@
      <widget class="QLabel" name="label_37">
       <property name="geometry">
        <rect>
-        <x>330</x>
+        <x>320</x>
         <y>130</y>
         <width>59</width>
         <height>16</height>
@@ -25322,38 +25322,6 @@
        <string>Voltage Status</string>
       </property>
      </widget>
-     <widget class="QTextEdit" name="textEdit_24c_2">
-      <property name="geometry">
-       <rect>
-        <x>460</x>
-        <y>170</y>
-        <width>51</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="verticalScrollBarPolicy">
-       <enum>Qt::ScrollBarAlwaysOff</enum>
-      </property>
-      <property name="horizontalScrollBarPolicy">
-       <enum>Qt::ScrollBarAlwaysOff</enum>
-      </property>
-     </widget>
-     <widget class="QTextEdit" name="textEdit_21c_2">
-      <property name="geometry">
-       <rect>
-        <x>460</x>
-        <y>110</y>
-        <width>51</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="verticalScrollBarPolicy">
-       <enum>Qt::ScrollBarAlwaysOff</enum>
-      </property>
-      <property name="horizontalScrollBarPolicy">
-       <enum>Qt::ScrollBarAlwaysOff</enum>
-      </property>
-     </widget>
      <widget class="QTextEdit" name="textEdit_23c_2">
       <property name="geometry">
        <rect>
@@ -25424,8 +25392,8 @@
      <widget class="QLabel" name="label_46">
       <property name="geometry">
        <rect>
-        <x>330</x>
-        <y>190</y>
+        <x>320</x>
+        <y>210</y>
         <width>59</width>
         <height>16</height>
        </rect>
@@ -25437,8 +25405,8 @@
      <widget class="QLabel" name="label_47">
       <property name="geometry">
        <rect>
-        <x>330</x>
-        <y>210</y>
+        <x>320</x>
+        <y>230</y>
         <width>59</width>
         <height>16</height>
        </rect>
@@ -25451,7 +25419,7 @@
       <property name="geometry">
        <rect>
         <x>380</x>
-        <y>190</y>
+        <y>210</y>
         <width>51</width>
         <height>21</height>
        </rect>
@@ -25467,7 +25435,7 @@
       <property name="geometry">
        <rect>
         <x>460</x>
-        <y>210</y>
+        <y>230</y>
         <width>51</width>
         <height>21</height>
        </rect>
@@ -25482,8 +25450,8 @@
      <widget class="QLabel" name="label_48">
       <property name="geometry">
        <rect>
-        <x>330</x>
-        <y>230</y>
+        <x>320</x>
+        <y>250</y>
         <width>59</width>
         <height>16</height>
        </rect>
@@ -25496,7 +25464,7 @@
       <property name="geometry">
        <rect>
         <x>460</x>
-        <y>230</y>
+        <y>250</y>
         <width>51</width>
         <height>21</height>
        </rect>
@@ -25506,6 +25474,80 @@
       </property>
       <property name="horizontalScrollBarPolicy">
        <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_49">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>270</y>
+        <width>59</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>5V CTRL</string>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEdit_28c_2">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>270</y>
+        <width>51</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEdit_21c_2">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>110</y>
+        <width>51</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEdit_33">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>190</y>
+        <width>51</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_54">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>190</y>
+        <width>59</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>5V MON</string>
       </property>
      </widget>
     </widget>
