@@ -25,6 +25,7 @@ from PyQt6.QtWidgets import (
 form_class = uic.loadUiType("mainwindow.ui")[0]
 
 Ser=0
+isB2=0
 pixel=1
 
 class Window(QMainWindow, form_class):
@@ -184,14 +185,25 @@ class Window(QMainWindow, form_class):
         self.textEdit_28c_2.setText(str(v.p5V_CTRL_Imon))    #5V ctrl current
 
 
-        self.textEdit_AD590_0.setText(str(v.B2_AD590_0))  #AD590_0
-        self.textEdit_AD590_1.setText(str(v.B2_AD590_1))  #AD590_1
-        self.textEdit_AD590_2.setText(str(v.B2_AD590_2))  #AD590_2
-        self.textEdit_AD590_3.setText(str(v.B2_AD590_3))  #AD590_3
-        self.textEdit_AD590_4.setText(str(v.B2_AD590_4))  #AD590_4
-        self.textEdit_AD590_5.setText(str(v.B2_AD590_5))  #AD590_5
-        self.textEdit_AD590_6.setText(str(v.B2_AD590_6))  #AD590_6
-        self.textEdit_AD590_7.setText(str(v.B2_AD590_7))  #AD590_7
+        self.layout.addWidget(self.textEdit_AD590_0)
+        self.layout.addWidget(self.textEdit_AD590_1)
+        self.layout.addWidget(self.textEdit_AD590_2)
+        self.layout.addWidget(self.textEdit_AD590_3)
+        self.layout.addWidget(self.textEdit_AD590_4)
+        self.layout.addWidget(self.textEdit_AD590_5)
+        self.layout.addWidget(self.textEdit_AD590_6)
+        self.layout.addWidget(self.textEdit_AD590_7)
+        for i in range(self.layout.count()):
+            self.layout.itemAt(i).widget().setText(str(i))
+
+        #self.textEdit_AD590_0.setText(str(v.B2_AD590_0))  #AD590_0
+        #self.textEdit_AD590_1.setText(str(v.B2_AD590_1))  #AD590_1
+        #self.textEdit_AD590_2.setText(str(v.B2_AD590_2))  #AD590_2
+        #self.textEdit_AD590_3.setText(str(v.B2_AD590_3))  #AD590_3
+        #self.textEdit_AD590_4.setText(str(v.B2_AD590_4))  #AD590_4
+        #self.textEdit_AD590_5.setText(str(v.B2_AD590_5))  #AD590_5
+        #self.textEdit_AD590_6.setText(str(v.B2_AD590_6))  #AD590_6
+        #self.textEdit_AD590_7.setText(str(v.B2_AD590_7))  #AD590_7
 
         self.textEdit_38.setText(str(v.B2_AD590_8))       #internal AD590 #1
         self.textEdit_39.setText(str(v.B2_AD590_9))       #internal AD590 #2
@@ -546,7 +558,10 @@ class Window(QMainWindow, form_class):
             baudrate=19200,
             timeout=1
         )
-
+        cmd="id\r"
+        Ser.write(cmd.encode())
+        data=coreSERIAL.read_end(Ser, '\n')
+        isB2=int(data[16])
 
     def btn_close_clicked(self):
         global Ser
