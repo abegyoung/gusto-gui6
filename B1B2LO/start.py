@@ -156,29 +156,33 @@ class Window(QMainWindow, form_class):
         #fill the tuple with data
         v = Volts._make(datan[1::2])
 
-
+        # Tab 1 Voltage rails
         self.textEdit_19.setText(str(v.n36V_MON_BUF))     #V36
         self.textEdit_20.setText(str(v.nSPARE_MON_BUF))   #V18
-        self.textEdit_21.setText(str(v.p5V_ANA_MON))      #5Vana
+        self.textEdit_21.setText(str(v.p5V_ANA_MON))      #+5Vana
         self.textEdit_22.setText(str(v.pV_ANA_MON))       #+9Vana
         self.textEdit_23.setText(str(v.nV_ANA_MON_BUF))   #-9Vana
         self.textEdit_24.setText(str(v.p5V_ANA_MON))      #5V
 
-        self.textEdit_19c.setText(  str(v.n36V_MON_BUF))     #V36
-        self.textEdit_19c_2.setText(str(v.n36V_Imon))        #V36 current
-        self.textEdit_20c.setText(  str(v.nSPARE_MON_BUF))   #V18
-        self.textEdit_21c.setText(  str(v.p5V_ANA_MON))      #5Vana
-        self.textEdit_21c_2.setText(str(v.p5V_ANA_Imon))     #5Vana current
-        self.textEdit_22c.setText(  str(v.pV_ANA_MON))       #+9Vana
-        self.textEdit_22c_2.setText(str(v.p9V_ANA_Imon))     #+9Vana current
-        self.textEdit_23c.setText(  str(v.nV_ANA_MON_BUF))   #-9Vana
-        self.textEdit_23c_2.setText(str(v.n9V_ANA_Imon))     #-9Vana current
-        self.textEdit_24c.setText(  str(v.p5V_ANA_MON))      #5V
-        self.textEdit_24c_2.setText(str(v.p5V_ANA_Imon))     #5V current
+        # Tab 2 Voltage rails
+        self.textEdit_19c.setText(str(v.n36V_MON_BUF))     #V36
+        self.textEdit_20c.setText(str(v.nSPARE_MON_BUF))   #V18
+        self.textEdit_21c.setText(str(v.p5V_ANA_MON))      #+5Vana
+        self.textEdit_22c.setText(str(v.pV_ANA_MON))       #+9Vana
+        self.textEdit_23c.setText(str(v.nV_ANA_MON_BUF))   #-9Vana
+        self.textEdit_24c.setText(str(v.p5V_REF_MON))      #5V REF
+        self.textEdit_33.setText( str(v.p5V_MON))          #5V MON
+        self.textEdit_25c.setText(str(v.SBC_3p3V))         #3.3V SBC 
 
-        self.textEdit_25c.setText(  str(v.SBC_3p3V))        #3.3V SBC 
-        self.textEdit_26c_2.setText(str(v.p15V_Imon))       #15V synth current
-        self.textEdit_27c_2.setText(str(v.p5V_SYNTH_Imon))  #5V synth current
+        # Tab 2 Current rails
+        self.textEdit_19c_2.setText(str(v.n36V_Imon))        #V36 current
+        self.textEdit_21c_2.setText(str(v.p5V_ANA_Imon))     #+5Vana
+        self.textEdit_22c_2.setText(str(v.p9V_ANA_Imon))     #+9Vana current
+        self.textEdit_23c_2.setText(str(v.n9V_ANA_Imon))     #-9Vana current
+        self.textEdit_26c_2.setText(str(v.p15V_Imon))        #15V synth current
+        self.textEdit_27c_2.setText(str(v.p5V_SYNTH_Imon))   #5V synth current
+        self.textEdit_28c_2.setText(str(v.p5V_CTRL_Imon))    #5V ctrl current
+
 
         self.textEdit_AD590_0.setText(str(v.B2_AD590_0))  #AD590_0
         self.textEdit_AD590_1.setText(str(v.B2_AD590_1))  #AD590_1
@@ -320,28 +324,28 @@ class Window(QMainWindow, form_class):
         self.spin3_8.blockSignals(False)
 
         self.dcdc1.blockSignals(True)
-        self.dcdc1.setChecked(int(v.B2_dcdc_1))
+        self.dcdc1.setChecked((int(v.B2_dcdc_mask) & 0x01)>>0)
         self.dcdc1.blockSignals(False)
         self.dcdc2.blockSignals(True)
-        self.dcdc2.setChecked(int(v.B2_dcdc_2))
+        self.dcdc2.setChecked((int(v.B2_dcdc_mask) & 0x02)>>1)
         self.dcdc2.blockSignals(False)
         self.dcdc3.blockSignals(True)
-        self.dcdc3.setChecked(int(v.B2_dcdc_3))
+        self.dcdc3.setChecked((int(v.B2_dcdc_mask) & 0x04)>>2)
         self.dcdc3.blockSignals(False)
         self.dcdc4.blockSignals(True)
-        self.dcdc4.setChecked(int(v.B2_dcdc_4))
+        self.dcdc4.setChecked((int(v.B2_dcdc_mask) & 0x08)>>3)
         self.dcdc4.blockSignals(False)
         self.dcdc5.blockSignals(True)
-        self.dcdc5.setChecked(int(v.B2_dcdc_5))
+        self.dcdc5.setChecked((int(v.B2_dcdc_mask) & 0x10)>>4)
         self.dcdc5.blockSignals(False)
         self.dcdc6.blockSignals(True)
-        self.dcdc6.setChecked(int(v.B2_dcdc_6))
+        self.dcdc6.setChecked((int(v.B2_dcdc_mask) & 0x20)>>5)
         self.dcdc6.blockSignals(False)
         self.dcdc7.blockSignals(True)
-        self.dcdc7.setChecked(int(v.B2_dcdc_7))
+        self.dcdc7.setChecked((int(v.B2_dcdc_mask) & 0x40)>>6)
         self.dcdc7.blockSignals(False)
         self.dcdc8.blockSignals(True)
-        self.dcdc8.setChecked(int(v.B2_dcdc_8))
+        self.dcdc8.setChecked((int(v.B2_dcdc_mask) & 0x80)>>7)
         self.dcdc8.blockSignals(False)
 
         self.textEdit_25.setText(str(v.B2_PSatV_1))
