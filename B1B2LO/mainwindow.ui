@@ -25736,8 +25736,8 @@
        <rect>
         <x>790</x>
         <y>60</y>
-        <width>76</width>
-        <height>251</height>
+        <width>71</width>
+        <height>241</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="tempLayout">
