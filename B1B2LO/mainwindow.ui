@@ -25740,7 +25740,7 @@
         <height>241</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout">
+      <layout class="QVBoxLayout" name="tempLayout">
        <property name="spacing">
         <number>5</number>
        </property>
