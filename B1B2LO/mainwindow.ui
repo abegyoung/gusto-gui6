@@ -25731,7 +25731,7 @@
        <string>Gate V</string>
       </property>
      </widget>
-     <widget class="QWidget" name="layoutWidget">
+     <widget class="QWidget" name="">
       <property name="geometry">
        <rect>
         <x>790</x>
@@ -25740,12 +25740,9 @@
         <height>241</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="tempLayout">
+      <layout class="QVBoxLayout" name="verticalLayout">
        <property name="spacing">
-        <number>0</number>
-       </property>
-       <property name="sizeConstraint">
-        <enum>QLayout::SetMinimumSize</enum>
+        <number>5</number>
        </property>
        <item>
         <widget class="QTextEdit" name="textEdit_AD590_0"/>
