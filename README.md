@@ -41,12 +41,12 @@ Various functions are divided into tabs within the GUI.  Tab 2 has DCDC control 
 
 ![alt text](https://github.com/abegyoung/gusto-gui6/blob/main/images/B1B2LO_Tab2.jpg?raw=true)
 
-The -36V rail provides power for all 24 of the multiplier biases.  Nominal current 100 mA.
-The -18V rail is permanently disabled.
-The 5Vana provides power to the AVA board, usually 1.9A when powered.
-The +/- 9V Analog rail provides power mostly to the bipolar amplifers. Each should be ~ 170mA / 135mA.
-The 3.3V rail is the regulated power supply for the Teensy.
-The 15V and 5V Synth currents are for the MLMS synth.
+- The -36V rail provides power for all 24 of the multiplier biases.  Nominal current 100 mA.
+- The -18V rail is permanently disabled.
+- The 5Vana provides power to the AVA board, usually 1.9A when powered.
+- The +/- 9V Analog rail provides power mostly to the bipolar amplifers. Each should be ~ 170mA / 135mA.
+- The 3.3V rail is the regulated power supply for the Teensy.
+- The 15V and 5V Synth currents are for the MLMS synth.
 
 ## B3LO
 This gui operates the B3LO controller on 4 tabs.
