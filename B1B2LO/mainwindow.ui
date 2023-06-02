@@ -25078,86 +25078,6 @@
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
      </widget>
-     <widget class="QTextEdit" name="textEdit_AD590_0">
-      <property name="geometry">
-       <rect>
-        <x>800</x>
-        <y>60</y>
-        <width>81</width>
-        <height>31</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QTextEdit" name="textEdit_AD590_1">
-      <property name="geometry">
-       <rect>
-        <x>800</x>
-        <y>90</y>
-        <width>81</width>
-        <height>31</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QTextEdit" name="textEdit_AD590_2">
-      <property name="geometry">
-       <rect>
-        <x>800</x>
-        <y>120</y>
-        <width>81</width>
-        <height>31</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QTextEdit" name="textEdit_AD590_3">
-      <property name="geometry">
-       <rect>
-        <x>800</x>
-        <y>150</y>
-        <width>81</width>
-        <height>31</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QTextEdit" name="textEdit_AD590_4">
-      <property name="geometry">
-       <rect>
-        <x>800</x>
-        <y>180</y>
-        <width>81</width>
-        <height>31</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QTextEdit" name="textEdit_AD590_5">
-      <property name="geometry">
-       <rect>
-        <x>800</x>
-        <y>210</y>
-        <width>81</width>
-        <height>31</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QTextEdit" name="textEdit_AD590_6">
-      <property name="geometry">
-       <rect>
-        <x>800</x>
-        <y>240</y>
-        <width>81</width>
-        <height>31</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QTextEdit" name="textEdit_AD590_7">
-      <property name="geometry">
-       <rect>
-        <x>800</x>
-        <y>270</y>
-        <width>81</width>
-        <height>31</height>
-       </rect>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_15">
       <property name="geometry">
        <rect>
@@ -25279,7 +25199,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Temp assignments B2LO</string>
+       <string>Temperatures</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_40">
@@ -25810,6 +25730,48 @@
       <property name="text">
        <string>Gate V</string>
       </property>
+     </widget>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>790</x>
+        <y>70</y>
+        <width>71</width>
+        <height>231</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="tempLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="sizeConstraint">
+        <enum>QLayout::SetMinimumSize</enum>
+       </property>
+       <item>
+        <widget class="QTextEdit" name="textEdit_AD590_0"/>
+       </item>
+       <item>
+        <widget class="QTextEdit" name="textEdit_AD590_1"/>
+       </item>
+       <item>
+        <widget class="QTextEdit" name="textEdit_AD590_2"/>
+       </item>
+       <item>
+        <widget class="QTextEdit" name="textEdit_AD590_3"/>
+       </item>
+       <item>
+        <widget class="QTextEdit" name="textEdit_AD590_4"/>
+       </item>
+       <item>
+        <widget class="QTextEdit" name="textEdit_AD590_5"/>
+       </item>
+       <item>
+        <widget class="QTextEdit" name="textEdit_AD590_6"/>
+       </item>
+       <item>
+        <widget class="QTextEdit" name="textEdit_AD590_7"/>
+       </item>
+      </layout>
      </widget>
     </widget>
     <widget class="QWidget" name="PID_Tab">
