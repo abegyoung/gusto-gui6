@@ -185,25 +185,11 @@ class Window(QMainWindow, form_class):
         self.textEdit_28c_2.setText(str(v.p5V_CTRL_Imon))    #5V ctrl current
 
 
-        self.layout.addWidget(self.textEdit_AD590_0)
-        self.layout.addWidget(self.textEdit_AD590_1)
-        self.layout.addWidget(self.textEdit_AD590_2)
-        self.layout.addWidget(self.textEdit_AD590_3)
-        self.layout.addWidget(self.textEdit_AD590_4)
-        self.layout.addWidget(self.textEdit_AD590_5)
-        self.layout.addWidget(self.textEdit_AD590_6)
-        self.layout.addWidget(self.textEdit_AD590_7)
-        for i in range(self.layout.count()):
-            self.layout.itemAt(i).widget().setText(str(i))
-
-        #self.textEdit_AD590_0.setText(str(v.B2_AD590_0))  #AD590_0
-        #self.textEdit_AD590_1.setText(str(v.B2_AD590_1))  #AD590_1
-        #self.textEdit_AD590_2.setText(str(v.B2_AD590_2))  #AD590_2
-        #self.textEdit_AD590_3.setText(str(v.B2_AD590_3))  #AD590_3
-        #self.textEdit_AD590_4.setText(str(v.B2_AD590_4))  #AD590_4
-        #self.textEdit_AD590_5.setText(str(v.B2_AD590_5))  #AD590_5
-        #self.textEdit_AD590_6.setText(str(v.B2_AD590_6))  #AD590_6
-        #self.textEdit_AD590_7.setText(str(v.B2_AD590_7))  #AD590_7
+        # Iterate over QVBoxLayout items textEdit_AD590_[0-7]
+        # Fill textEdit boxes using getattr() with field. Nice.
+        for i in range(self.tempLayout.count()):
+            field="B2_AD590_%d" % i
+            self.tempLayout.itemAt(i).widget().setText(str(getattr(v, field)))
 
         self.textEdit_38.setText(str(v.B2_AD590_8))       #internal AD590 #1
         self.textEdit_39.setText(str(v.B2_AD590_9))       #internal AD590 #2
