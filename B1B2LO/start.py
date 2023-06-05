@@ -196,8 +196,13 @@ class Window(QMainWindow, form_class):
         self.textEdit_40.setText(str(v.B2_AD590_10))      #internal AD590 #3
 
         for i in range(0, 48):
-            print(i)
-            self.multLayout.itemAt(i).widget().setText(str(i))
+          #self.multLayout.itemAt(i).widget().setText(str(i))
+          if(i%2):
+            field="B2_MultI_%d" % int((i+2)/2)
+          else:
+            field="B2_MultV_%d" % int((i+2)/2)
+          self.multLayout.itemAt(i).widget().setText(str(getattr(v, field)))
+
 
         self.spin1_1.blockSignals(True)
         self.spin1_1.setValue(int(v.B2_DAC_1))

@@ -11707,9 +11707,9 @@
       <property name="geometry">
        <rect>
         <x>-3</x>
-        <y>43</y>
+        <y>33</y>
         <width>511</width>
-        <height>241</height>
+        <height>261</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="multLayout">
@@ -11717,7 +11717,7 @@
         <number>0</number>
        </property>
        <item row="0" column="0">
-        <widget class="QTextEdit" name="textEdit_mult00_01">
+        <widget class="QTextEdit" name="Pix1_Stg1_Vmon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -11727,7 +11727,7 @@
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QTextEdit" name="textEdit_mult00_02">
+        <widget class="QTextEdit" name="Pix1_Stg1_Imon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -11737,7 +11737,7 @@
         </widget>
        </item>
        <item row="1" column="0">
-        <widget class="QTextEdit" name="textEdit_mult00_03">
+        <widget class="QTextEdit" name="Pix2_Stg1_Vmon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -11747,7 +11747,7 @@
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QTextEdit" name="textEdit_mult00_04">
+        <widget class="QTextEdit" name="Pix2_Stg1_Imon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -11757,7 +11757,7 @@
         </widget>
        </item>
        <item row="2" column="0">
-        <widget class="QTextEdit" name="textEdit_mult00_05">
+        <widget class="QTextEdit" name="Pix3_Stg1_Vmon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -11767,7 +11767,7 @@
         </widget>
        </item>
        <item row="2" column="1">
-        <widget class="QTextEdit" name="textEdit_mult00_06">
+        <widget class="QTextEdit" name="Pix3_Stg1_Imon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -11777,7 +11777,7 @@
         </widget>
        </item>
        <item row="3" column="0">
-        <widget class="QTextEdit" name="textEdit_mult00_07">
+        <widget class="QTextEdit" name="Pix4_Stg1_Vmon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -11787,7 +11787,7 @@
         </widget>
        </item>
        <item row="3" column="1">
-        <widget class="QTextEdit" name="textEdit_mult00_08">
+        <widget class="QTextEdit" name="Pix4_Stg1_Imon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -11797,7 +11797,7 @@
         </widget>
        </item>
        <item row="4" column="0">
-        <widget class="QTextEdit" name="textEdit_mult00_09">
+        <widget class="QTextEdit" name="Pix5_Stg1_Vmon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -11807,7 +11807,7 @@
         </widget>
        </item>
        <item row="4" column="1">
-        <widget class="QTextEdit" name="textEdit_mult00_10">
+        <widget class="QTextEdit" name="Pix5_Stg1_Imon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -11817,7 +11817,7 @@
         </widget>
        </item>
        <item row="5" column="0">
-        <widget class="QTextEdit" name="textEdit_mult00_11">
+        <widget class="QTextEdit" name="Pix6_Stg1_Vmon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -11827,7 +11827,7 @@
         </widget>
        </item>
        <item row="5" column="1">
-        <widget class="QTextEdit" name="textEdit_mult00_12">
+        <widget class="QTextEdit" name="Pix6_Stg1_Imon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -11837,7 +11837,7 @@
         </widget>
        </item>
        <item row="6" column="0">
-        <widget class="QTextEdit" name="textEdit_mult00_13">
+        <widget class="QTextEdit" name="Pix7_Stg1_Vmon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -11847,7 +11847,7 @@
         </widget>
        </item>
        <item row="6" column="1">
-        <widget class="QTextEdit" name="textEdit_mult00_14">
+        <widget class="QTextEdit" name="Pix7_Stg1_Imon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -11857,7 +11857,7 @@
         </widget>
        </item>
        <item row="7" column="0">
-        <widget class="QTextEdit" name="textEdit_mult00_15">
+        <widget class="QTextEdit" name="Pix8_Stg1_Vmon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -11867,7 +11867,7 @@
         </widget>
        </item>
        <item row="7" column="1">
-        <widget class="QTextEdit" name="textEdit_mult00_16">
+        <widget class="QTextEdit" name="Pix8_Stg1_Imon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -11877,7 +11877,7 @@
         </widget>
        </item>
        <item row="0" column="3">
-        <widget class="QTextEdit" name="textEdit_mult00_17">
+        <widget class="QTextEdit" name="Pix1_Stg2_Vmon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -11887,7 +11887,7 @@
         </widget>
        </item>
        <item row="0" column="4">
-        <widget class="QTextEdit" name="textEdit_mult00_18">
+        <widget class="QTextEdit" name="Pix1_Stg2_Imon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -11897,7 +11897,7 @@
         </widget>
        </item>
        <item row="1" column="3">
-        <widget class="QTextEdit" name="textEdit_mult00_19">
+        <widget class="QTextEdit" name="Pix2_Stg2_Vmon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -11907,7 +11907,7 @@
         </widget>
        </item>
        <item row="1" column="4">
-        <widget class="QTextEdit" name="textEdit_mult00_20">
+        <widget class="QTextEdit" name="Pix2_Stg2_Imon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -11917,7 +11917,7 @@
         </widget>
        </item>
        <item row="2" column="3">
-        <widget class="QTextEdit" name="textEdit_mult00_21">
+        <widget class="QTextEdit" name="Pix3_Stg2_Vmon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -11927,7 +11927,7 @@
         </widget>
        </item>
        <item row="2" column="4">
-        <widget class="QTextEdit" name="textEdit_mult00_22">
+        <widget class="QTextEdit" name="Pix3_Stg2_Imon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -11937,7 +11937,7 @@
         </widget>
        </item>
        <item row="3" column="3">
-        <widget class="QTextEdit" name="textEdit_mult00_23">
+        <widget class="QTextEdit" name="Pix4_Stg2_Vmon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -11947,7 +11947,7 @@
         </widget>
        </item>
        <item row="3" column="4">
-        <widget class="QTextEdit" name="textEdit_mult00_24">
+        <widget class="QTextEdit" name="Pix4_Stg2_Imon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -11957,7 +11957,7 @@
         </widget>
        </item>
        <item row="4" column="3">
-        <widget class="QTextEdit" name="textEdit_mult00_25">
+        <widget class="QTextEdit" name="Pix5_Stg2_Vmon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -11967,7 +11967,7 @@
         </widget>
        </item>
        <item row="4" column="4">
-        <widget class="QTextEdit" name="textEdit_mult00_26">
+        <widget class="QTextEdit" name="Pix5_Stg2_Imon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -11977,7 +11977,7 @@
         </widget>
        </item>
        <item row="5" column="3">
-        <widget class="QTextEdit" name="textEdit_mult00_27">
+        <widget class="QTextEdit" name="Pix6_Stg2_Vmon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -11987,7 +11987,7 @@
         </widget>
        </item>
        <item row="5" column="4">
-        <widget class="QTextEdit" name="textEdit_mult00_28">
+        <widget class="QTextEdit" name="Pix6_Stg2_Imon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -11997,7 +11997,7 @@
         </widget>
        </item>
        <item row="6" column="3">
-        <widget class="QTextEdit" name="textEdit_mult00_29">
+        <widget class="QTextEdit" name="Pix7_Stg2_Vmon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -12007,7 +12007,7 @@
         </widget>
        </item>
        <item row="6" column="4">
-        <widget class="QTextEdit" name="textEdit_mult00_30">
+        <widget class="QTextEdit" name="Pix7_Stg2_Imon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -12017,7 +12017,7 @@
         </widget>
        </item>
        <item row="7" column="3">
-        <widget class="QTextEdit" name="textEdit_mult00_31">
+        <widget class="QTextEdit" name="Pix8_Stg2_Vmon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -12027,7 +12027,7 @@
         </widget>
        </item>
        <item row="7" column="4">
-        <widget class="QTextEdit" name="textEdit_mult00_32">
+        <widget class="QTextEdit" name="Pix8_Stg2_Imon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -12037,7 +12037,7 @@
         </widget>
        </item>
        <item row="0" column="6">
-        <widget class="QTextEdit" name="textEdit_mult00_33">
+        <widget class="QTextEdit" name="Pix1_Stg3_Vmon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -12047,7 +12047,7 @@
         </widget>
        </item>
        <item row="0" column="7">
-        <widget class="QTextEdit" name="textEdit_mult00_34">
+        <widget class="QTextEdit" name="Pix1_Stg3_Imon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -12057,7 +12057,7 @@
         </widget>
        </item>
        <item row="1" column="6">
-        <widget class="QTextEdit" name="textEdit_mult00_35">
+        <widget class="QTextEdit" name="Pix2_Stg3_Vmon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -12067,7 +12067,7 @@
         </widget>
        </item>
        <item row="1" column="7">
-        <widget class="QTextEdit" name="textEdit_mult00_36">
+        <widget class="QTextEdit" name="Pix2_Stg3_Imon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -12077,7 +12077,7 @@
         </widget>
        </item>
        <item row="2" column="6">
-        <widget class="QTextEdit" name="textEdit_mult00_37">
+        <widget class="QTextEdit" name="Pix3_Stg3_Vmon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -12087,7 +12087,7 @@
         </widget>
        </item>
        <item row="2" column="7">
-        <widget class="QTextEdit" name="textEdit_mult00_38">
+        <widget class="QTextEdit" name="Pix3_Stg3_Imon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -12097,7 +12097,7 @@
         </widget>
        </item>
        <item row="3" column="6">
-        <widget class="QTextEdit" name="textEdit_mult00_39">
+        <widget class="QTextEdit" name="Pix4_Stg3_Vmon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -12107,7 +12107,7 @@
         </widget>
        </item>
        <item row="3" column="7">
-        <widget class="QTextEdit" name="textEdit_mult00_40">
+        <widget class="QTextEdit" name="Pix4_Stg3_Imon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -12117,7 +12117,7 @@
         </widget>
        </item>
        <item row="4" column="6">
-        <widget class="QTextEdit" name="textEdit_mult00_41">
+        <widget class="QTextEdit" name="Pix5_Stg3_Vmon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -12127,7 +12127,7 @@
         </widget>
        </item>
        <item row="4" column="7">
-        <widget class="QTextEdit" name="textEdit_mult00_42">
+        <widget class="QTextEdit" name="Pix5_Stg3_Imon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -12137,7 +12137,7 @@
         </widget>
        </item>
        <item row="5" column="6">
-        <widget class="QTextEdit" name="textEdit_mult00_43">
+        <widget class="QTextEdit" name="Pix6_Stg3_Vmon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -12147,7 +12147,7 @@
         </widget>
        </item>
        <item row="5" column="7">
-        <widget class="QTextEdit" name="textEdit_mult00_44">
+        <widget class="QTextEdit" name="Pix6_Stg3_Imon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -12157,7 +12157,7 @@
         </widget>
        </item>
        <item row="6" column="6">
-        <widget class="QTextEdit" name="textEdit_mult00_45">
+        <widget class="QTextEdit" name="Pix7_Stg3_Vmon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -12167,7 +12167,7 @@
         </widget>
        </item>
        <item row="6" column="7">
-        <widget class="QTextEdit" name="textEdit_mult00_46">
+        <widget class="QTextEdit" name="Pix7_Stg3_Imon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -12177,7 +12177,7 @@
         </widget>
        </item>
        <item row="7" column="6">
-        <widget class="QTextEdit" name="textEdit_mult00_47">
+        <widget class="QTextEdit" name="Pix8_Stg3_Vmon">
          <property name="maximumSize">
           <size>
            <width>51</width>
@@ -12187,7 +12187,7 @@
         </widget>
        </item>
        <item row="7" column="7">
-        <widget class="QTextEdit" name="textEdit_mult00_48">
+        <widget class="QTextEdit" name="Pix8_Stg3_Imon">
          <property name="maximumSize">
           <size>
            <width>51</width>
