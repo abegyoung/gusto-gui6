@@ -195,56 +195,9 @@ class Window(QMainWindow, form_class):
         self.textEdit_39.setText(str(v.B2_AD590_9))       #internal AD590 #2
         self.textEdit_40.setText(str(v.B2_AD590_10))      #internal AD590 #3
 
-        self.Pix1_Stg1_Vmon.setText(str(v.B2_MultV_1))
-        self.Pix1_Stg1_Imon.setText(str(v.B2_MultI_1))
-        self.Pix2_Stg1_Vmon.setText(str(v.B2_MultV_2))
-        self.Pix2_Stg1_Imon.setText(str(v.B2_MultI_2))
-        self.Pix3_Stg1_Vmon.setText(str(v.B2_MultV_3))
-        self.Pix3_Stg1_Imon.setText(str(v.B2_MultI_3))
-        self.Pix4_Stg1_Vmon.setText(str(v.B2_MultV_4))
-        self.Pix4_Stg1_Imon.setText(str(v.B2_MultI_4))
-        self.Pix5_Stg1_Vmon.setText(str(v.B2_MultV_5))
-        self.Pix5_Stg1_Imon.setText(str(v.B2_MultI_5))
-        self.Pix6_Stg1_Vmon.setText(str(v.B2_MultV_6))
-        self.Pix6_Stg1_Imon.setText(str(v.B2_MultI_6))
-        self.Pix7_Stg1_Vmon.setText(str(v.B2_MultV_7))
-        self.Pix7_Stg1_Imon.setText(str(v.B2_MultI_7))
-        self.Pix8_Stg1_Vmon.setText(str(v.B2_MultV_8))
-        self.Pix8_Stg1_Imon.setText(str(v.B2_MultI_8))
-
-        self.Pix1_Stg2_Vmon.setText(str(v.B2_MultV_9))
-        self.Pix1_Stg2_Imon.setText(str(v.B2_MultI_9))
-        self.Pix2_Stg2_Vmon.setText(str(v.B2_MultV_10))
-        self.Pix2_Stg2_Imon.setText(str(v.B2_MultI_10))
-        self.Pix3_Stg2_Vmon.setText(str(v.B2_MultV_11))
-        self.Pix3_Stg2_Imon.setText(str(v.B2_MultI_11))
-        self.Pix4_Stg2_Vmon.setText(str(v.B2_MultV_12))
-        self.Pix4_Stg2_Imon.setText(str(v.B2_MultI_12))
-        self.Pix5_Stg2_Vmon.setText(str(v.B2_MultV_13))
-        self.Pix5_Stg2_Imon.setText(str(v.B2_MultI_13))
-        self.Pix6_Stg2_Vmon.setText(str(v.B2_MultV_14))
-        self.Pix6_Stg2_Imon.setText(str(v.B2_MultI_14))
-        self.Pix7_Stg2_Vmon.setText(str(v.B2_MultV_15))
-        self.Pix7_Stg2_Imon.setText(str(v.B2_MultI_15))
-        self.Pix8_Stg2_Vmon.setText(str(v.B2_MultV_16))
-        self.Pix8_Stg2_Imon.setText(str(v.B2_MultI_16))
-
-        self.Pix1_Stg3_Vmon.setText(str(v.B2_MultV_17))
-        self.Pix1_Stg3_Imon.setText(str(v.B2_MultI_17))
-        self.Pix2_Stg3_Vmon.setText(str(v.B2_MultV_18))
-        self.Pix2_Stg3_Imon.setText(str(v.B2_MultI_18))
-        self.Pix3_Stg3_Vmon.setText(str(v.B2_MultV_19))
-        self.Pix3_Stg3_Imon.setText(str(v.B2_MultI_19))
-        self.Pix4_Stg3_Vmon.setText(str(v.B2_MultV_20))
-        self.Pix4_Stg3_Imon.setText(str(v.B2_MultI_20))
-        self.Pix5_Stg3_Vmon.setText(str(v.B2_MultV_21))
-        self.Pix5_Stg3_Imon.setText(str(v.B2_MultI_21))
-        self.Pix6_Stg3_Vmon.setText(str(v.B2_MultV_22))
-        self.Pix6_Stg3_Imon.setText(str(v.B2_MultI_22))
-        self.Pix7_Stg3_Vmon.setText(str(v.B2_MultV_23))
-        self.Pix7_Stg3_Imon.setText(str(v.B2_MultI_23))
-        self.Pix8_Stg3_Vmon.setText(str(v.B2_MultV_24))
-        self.Pix8_Stg3_Imon.setText(str(v.B2_MultI_24))
+        for i in range(0, 48):
+            print(i)
+            self.multLayout.itemAt(i).widget().setText(str(i))
 
         self.spin1_1.blockSignals(True)
         self.spin1_1.setValue(int(v.B2_DAC_1))
@@ -540,7 +493,8 @@ class Window(QMainWindow, form_class):
     def btn_open_clicked(self):
         global Ser
         Ser = serial.Serial(
-            port='/dev/ttyACM0',
+            #port='/dev/ttyACM0',
+            port='/dev/cu.usbmodemB2LO_CTRL1',
             baudrate=19200,
             timeout=1
         )
