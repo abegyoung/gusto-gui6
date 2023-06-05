@@ -47,30 +47,30 @@ class Window(QMainWindow, form_class):
         self.btn_refresh.clicked.connect(self.btn_refresh_clicked)
 
         #DAC spin buttons
-        self.spin1_1.valueChanged.connect(self.update_spin1_1)
-        self.spin1_2.valueChanged.connect(self.update_spin1_2)
-        self.spin1_3.valueChanged.connect(self.update_spin1_3)
-        self.spin1_4.valueChanged.connect(self.update_spin1_4)
-        self.spin1_5.valueChanged.connect(self.update_spin1_5)
-        self.spin1_6.valueChanged.connect(self.update_spin1_6)
-        self.spin1_7.valueChanged.connect(self.update_spin1_7)
-        self.spin1_8.valueChanged.connect(self.update_spin1_8)
-        self.spin2_1.valueChanged.connect(self.update_spin2_1)
-        self.spin2_2.valueChanged.connect(self.update_spin2_2)
-        self.spin2_3.valueChanged.connect(self.update_spin2_3)
-        self.spin2_4.valueChanged.connect(self.update_spin2_4)
-        self.spin2_5.valueChanged.connect(self.update_spin2_5)
-        self.spin2_6.valueChanged.connect(self.update_spin2_6)
-        self.spin2_7.valueChanged.connect(self.update_spin2_7)
-        self.spin2_8.valueChanged.connect(self.update_spin2_8)
-        self.spin3_1.valueChanged.connect(self.update_spin3_1)
-        self.spin3_2.valueChanged.connect(self.update_spin3_2)
-        self.spin3_3.valueChanged.connect(self.update_spin3_3)
-        self.spin3_4.valueChanged.connect(self.update_spin3_4)
-        self.spin3_5.valueChanged.connect(self.update_spin3_5)
-        self.spin3_6.valueChanged.connect(self.update_spin3_6)
-        self.spin3_7.valueChanged.connect(self.update_spin3_7)
-        self.spin3_8.valueChanged.connect(self.update_spin3_8)
+        self.spinBox_01.valueChanged.connect(self.update_spin1_1)
+        self.spinBox_02.valueChanged.connect(self.update_spin1_2)
+        self.spinBox_03.valueChanged.connect(self.update_spin1_3)
+        self.spinBox_04.valueChanged.connect(self.update_spin1_4)
+        self.spinBox_05.valueChanged.connect(self.update_spin1_5)
+        self.spinBox_06.valueChanged.connect(self.update_spin1_6)
+        self.spinBox_07.valueChanged.connect(self.update_spin1_7)
+        self.spinBox_08.valueChanged.connect(self.update_spin1_8)
+        self.spinBox_09.valueChanged.connect(self.update_spin2_1)
+        self.spinBox_10.valueChanged.connect(self.update_spin2_2)
+        self.spinBox_11.valueChanged.connect(self.update_spin2_3)
+        self.spinBox_12.valueChanged.connect(self.update_spin2_4)
+        self.spinBox_13.valueChanged.connect(self.update_spin2_5)
+        self.spinBox_14.valueChanged.connect(self.update_spin2_6)
+        self.spinBox_15.valueChanged.connect(self.update_spin2_7)
+        self.spinBox_16.valueChanged.connect(self.update_spin2_8)
+        self.spinBox_17.valueChanged.connect(self.update_spin3_1)
+        self.spinBox_18.valueChanged.connect(self.update_spin3_2)
+        self.spinBox_19.valueChanged.connect(self.update_spin3_3)
+        self.spinBox_20.valueChanged.connect(self.update_spin3_4)
+        self.spinBox_21.valueChanged.connect(self.update_spin3_5)
+        self.spinBox_22.valueChanged.connect(self.update_spin3_6)
+        self.spinBox_23.valueChanged.connect(self.update_spin3_7)
+        self.spinBox_24.valueChanged.connect(self.update_spin3_8)
 
         #PCA9502
         self.dcdc1.toggled.connect(self.btn_dcdc1_clicked)
@@ -203,106 +203,18 @@ class Window(QMainWindow, form_class):
             field="B2_MultV_%d" % int((i+2)/2)
           self.multLayout.itemAt(i).widget().setText(str(getattr(v, field)))
 
+        for i in range(0, 24):
+          field="B2_DAC_%d" % (i+1)
+          self.multLayout.itemAt(i+48).widget().blockSignals(True)
+          self.multLayout.itemAt(i+48).widget().setValue(int(getattr(v, field)))
+          self.multLayout.itemAt(i+48).widget().blockSignals(False)
 
-        self.spin1_1.blockSignals(True)
-        self.spin1_1.setValue(int(v.B2_DAC_1))
-        self.spin1_1.blockSignals(False)
-        self.spin1_2.blockSignals(True)
-        self.spin1_2.setValue(int(v.B2_DAC_2))
-        self.spin1_2.blockSignals(False)
-        self.spin1_3.blockSignals(True)
-        self.spin1_3.setValue(int(v.B2_DAC_3))
-        self.spin1_3.blockSignals(False)
-        self.spin1_4.blockSignals(True)
-        self.spin1_4.setValue(int(v.B2_DAC_4))
-        self.spin1_4.blockSignals(False)
-        self.spin1_5.blockSignals(True)
-        self.spin1_5.setValue(int(v.B2_DAC_5))
-        self.spin1_5.blockSignals(False)
-        self.spin1_6.blockSignals(True)
-        self.spin1_6.setValue(int(v.B2_DAC_6))
-        self.spin1_6.blockSignals(False)
-        self.spin1_7.blockSignals(True)
-        self.spin1_7.setValue(int(v.B2_DAC_7))
-        self.spin1_7.blockSignals(False)
-        self.spin1_8.blockSignals(True)
-        self.spin1_8.setValue(int(v.B2_DAC_8))
-        self.spin1_8.blockSignals(False)
-
-        self.spin2_1.blockSignals(True)
-        self.spin2_1.setValue(int(v.B2_DAC_9))
-        self.spin2_1.blockSignals(False)
-        self.spin2_2.blockSignals(True)
-        self.spin2_2.setValue(int(v.B2_DAC_10))
-        self.spin2_2.blockSignals(False)
-        self.spin2_3.blockSignals(True)
-        self.spin2_3.setValue(int(v.B2_DAC_11))
-        self.spin2_3.blockSignals(False)
-        self.spin2_4.blockSignals(True)
-        self.spin2_4.setValue(int(v.B2_DAC_12))
-        self.spin2_4.blockSignals(False)
-        self.spin2_5.blockSignals(True)
-        self.spin2_5.setValue(int(v.B2_DAC_13))
-        self.spin2_5.blockSignals(False)
-        self.spin2_6.blockSignals(True)
-        self.spin2_6.setValue(int(v.B2_DAC_14))
-        self.spin2_6.blockSignals(False)
-        self.spin2_7.blockSignals(True)
-        self.spin2_7.setValue(int(v.B2_DAC_15))
-        self.spin2_7.blockSignals(False)
-        self.spin2_8.blockSignals(True)
-        self.spin2_8.setValue(int(v.B2_DAC_16))
-        self.spin2_8.blockSignals(False)
-
-        self.spin3_1.blockSignals(True)
-        self.spin3_1.setValue(int(v.B2_DAC_17))
-        self.spin3_1.blockSignals(False)
-        self.spin3_2.blockSignals(True)
-        self.spin3_2.setValue(int(v.B2_DAC_18))
-        self.spin3_2.blockSignals(False)
-        self.spin3_3.blockSignals(True)
-        self.spin3_3.setValue(int(v.B2_DAC_19))
-        self.spin3_3.blockSignals(False)
-        self.spin3_4.blockSignals(True)
-        self.spin3_4.setValue(int(v.B2_DAC_20))
-        self.spin3_4.blockSignals(False)
-        self.spin3_5.blockSignals(True)
-        self.spin3_5.setValue(int(v.B2_DAC_21))
-        self.spin3_5.blockSignals(False)
-        self.spin3_6.blockSignals(True)
-        self.spin3_6.setValue(int(v.B2_DAC_22))
-        self.spin3_6.blockSignals(False)
-        self.spin3_7.blockSignals(True)
-        self.spin3_7.setValue(int(v.B2_DAC_23))
-        self.spin3_7.blockSignals(False)
-        self.spin3_8.blockSignals(True)
-        self.spin3_8.setValue(int(v.B2_DAC_24))
-        self.spin3_8.blockSignals(False)
-
-        self.dcdc1.blockSignals(True)
-        self.dcdc1.setChecked((int(v.B2_dcdc_mask, 2) & 0x01)>>0)
-        self.dcdc1.blockSignals(False)
-        self.dcdc2.blockSignals(True)
-        self.dcdc2.setChecked((int(v.B2_dcdc_mask, 2) & 0x02)>>1)
-        self.dcdc2.blockSignals(False)
-        self.dcdc3.blockSignals(True)
-        self.dcdc3.setChecked((int(v.B2_dcdc_mask, 2) & 0x04)>>2)
-        self.dcdc3.blockSignals(False)
-        self.dcdc4.blockSignals(True)
-        self.dcdc4.setChecked((int(v.B2_dcdc_mask, 2) & 0x08)>>3)
-        self.dcdc4.blockSignals(False)
-        self.dcdc5.blockSignals(True)
-        self.dcdc5.setChecked((int(v.B2_dcdc_mask, 2) & 0x10)>>4)
-        self.dcdc5.blockSignals(False)
-        self.dcdc6.blockSignals(True)
-        self.dcdc6.setChecked((int(v.B2_dcdc_mask, 2) & 0x20)>>5)
-        self.dcdc6.blockSignals(False)
-        self.dcdc7.blockSignals(True)
-        self.dcdc7.setChecked((int(v.B2_dcdc_mask, 2) & 0x40)>>6)
-        self.dcdc7.blockSignals(False)
-        self.dcdc8.blockSignals(True)
-        self.dcdc8.setChecked((int(v.B2_dcdc_mask, 2) & 0x80)>>7)
-        self.dcdc8.blockSignals(False)
+        field="B2_dcdc_mask"
+        mask=int(getattr(v, field), 2)
+        for i in range(self.dcdcLayout.count()):
+          self.dcdcLayout.itemAt(i).widget().blockSignals(True)
+          self.dcdcLayout.itemAt(i).widget().setChecked((mask & (1<<i))>>i)
+          self.dcdcLayout.itemAt(i).widget().blockSignals(False)
 
         self.textEdit_25.setText(str(v.B2_PSatV_1))
         self.textEdit_26.setText(str(v.B2_PSatV_2))
@@ -539,7 +451,7 @@ class Window(QMainWindow, form_class):
 
     def update_spin1_1(self):
         global Ser
-        value = self.spin1_1.value()
+        value = self.spinBox_01.value()
         cmd="mult 1 %d\r" % value
         Ser.write(cmd.encode())
         data=coreSERIAL.read_end(Ser, '\n').split()
@@ -551,7 +463,7 @@ class Window(QMainWindow, form_class):
 
     def update_spin1_2(self):
         global Ser
-        value = self.spin1_2.value()
+        value = self.spinBox_02.value()
         cmd="mult 2 %d\r" % value
         Ser.write(cmd.encode())
         data=coreSERIAL.read_end(Ser, '\n').split()
@@ -563,7 +475,7 @@ class Window(QMainWindow, form_class):
 
     def update_spin1_3(self):
         global Ser
-        value = self.spin1_3.value()
+        value = self.spinBox_03.value()
         cmd="mult 3 %d\r" % value
         Ser.write(cmd.encode())
         data=coreSERIAL.read_end(Ser, '\n').split()
@@ -575,7 +487,7 @@ class Window(QMainWindow, form_class):
 
     def update_spin1_4(self):
         global Ser
-        value = self.spin1_4.value()
+        value = self.spinBox_04.value()
         cmd="mult 4 %d\r" % value
         Ser.write(cmd.encode())
         data=coreSERIAL.read_end(Ser, '\n').split()
@@ -587,7 +499,7 @@ class Window(QMainWindow, form_class):
 
     def update_spin1_5(self):
         global Ser
-        value = self.spin1_5.value()
+        value = self.spinBox_05.value()
         cmd="mult 5 %d\r" % value
         Ser.write(cmd.encode())
         data=coreSERIAL.read_end(Ser, '\n').split()
@@ -599,7 +511,7 @@ class Window(QMainWindow, form_class):
 
     def update_spin1_6(self):
         global Ser
-        value = self.spin1_6.value()
+        value = self.spinBox_06.value()
         cmd="mult 6 %d\r" % value
         Ser.write(cmd.encode())
         data=coreSERIAL.read_end(Ser, '\n').split()
@@ -611,7 +523,7 @@ class Window(QMainWindow, form_class):
 
     def update_spin1_7(self):
         global Ser
-        value = self.spin1_7.value()
+        value = self.spinBox_07.value()
         cmd="mult 7 %d\r" % value
         Ser.write(cmd.encode())
         data=coreSERIAL.read_end(Ser, '\n').split()
@@ -623,7 +535,7 @@ class Window(QMainWindow, form_class):
 
     def update_spin1_8(self):
         global Ser
-        value = self.spin1_8.value()
+        value = self.spinBox_08.value()
         cmd="mult 8 %d\r" % value
         Ser.write(cmd.encode())
         data=coreSERIAL.read_end(Ser, '\n').split()
@@ -635,7 +547,7 @@ class Window(QMainWindow, form_class):
 
     def update_spin2_1(self):
         global Ser
-        value = self.spin2_1.value()
+        value = self.spinBox_09.value()
         cmd="mult 9 %d\r" % value
         Ser.write(cmd.encode())
         data=coreSERIAL.read_end(Ser, '\n').split()
@@ -647,7 +559,7 @@ class Window(QMainWindow, form_class):
 
     def update_spin2_2(self):
         global Ser
-        value = self.spin2_2.value()
+        value = self.spinBox_10.value()
         cmd="mult 10 %d\r" % value
         Ser.write(cmd.encode())
         data=coreSERIAL.read_end(Ser, '\n').split()
@@ -659,7 +571,7 @@ class Window(QMainWindow, form_class):
 
     def update_spin2_3(self):
         global Ser
-        value = self.spin2_3.value()
+        value = self.spinBox_11.value()
         cmd="mult 11 %d\r" % value
         Ser.write(cmd.encode())
         data=coreSERIAL.read_end(Ser, '\n').split()
@@ -671,7 +583,7 @@ class Window(QMainWindow, form_class):
 
     def update_spin2_4(self):
         global Ser
-        value = self.spin2_4.value()
+        value = self.spinBox_12.value()
         cmd="mult 12 %d\r" % value
         Ser.write(cmd.encode())
         data=coreSERIAL.read_end(Ser, '\n').split()
@@ -683,7 +595,7 @@ class Window(QMainWindow, form_class):
 
     def update_spin2_5(self):
         global Ser
-        value = self.spin2_5.value()
+        value = self.spinBox_13.value()
         cmd="mult 13 %d\r" % value
         Ser.write(cmd.encode())
         data=coreSERIAL.read_end(Ser, '\n').split()
@@ -695,7 +607,7 @@ class Window(QMainWindow, form_class):
 
     def update_spin2_6(self):
         global Ser
-        value = self.spin2_6.value()
+        value = self.spinBox_14.value()
         cmd="mult 14 %d\r" % value
         Ser.write(cmd.encode())
         data=coreSERIAL.read_end(Ser, '\n').split()
@@ -707,7 +619,7 @@ class Window(QMainWindow, form_class):
 
     def update_spin2_7(self):
         global Ser
-        value = self.spin2_7.value()
+        value = self.spinBox_15.value()
         cmd="mult 15 %d\r" % value
         Ser.write(cmd.encode())
         data=coreSERIAL.read_end(Ser, '\n').split()
@@ -719,7 +631,7 @@ class Window(QMainWindow, form_class):
 
     def update_spin2_8(self):
         global Ser
-        value = self.spin2_8.value()
+        value = self.spinBox_16.value()
         cmd="mult 16 %d\r" % value
         Ser.write(cmd.encode())
         data=coreSERIAL.read_end(Ser, '\n').split()
@@ -731,7 +643,7 @@ class Window(QMainWindow, form_class):
 
     def update_spin3_1(self):
         global Ser
-        value = self.spin3_1.value()
+        value = self.spinBox_17.value()
         cmd="mult 17 %d\r" % value
         Ser.write(cmd.encode())
         data=coreSERIAL.read_end(Ser, '\n').split()
@@ -743,7 +655,7 @@ class Window(QMainWindow, form_class):
 
     def update_spin3_2(self):
         global Ser
-        value = self.spin3_2.value()
+        value = self.spinBox_18.value()
         cmd="mult 18 %d\r" % value
         Ser.write(cmd.encode())
         data=coreSERIAL.read_end(Ser, '\n').split()
@@ -755,7 +667,7 @@ class Window(QMainWindow, form_class):
 
     def update_spin3_3(self):
         global Ser
-        value = self.spin3_3.value()
+        value = self.spinBox_19.value()
         cmd="mult 19 %d\r" % value
         Ser.write(cmd.encode())
         data=coreSERIAL.read_end(Ser, '\n').split()
@@ -767,7 +679,7 @@ class Window(QMainWindow, form_class):
 
     def update_spin3_4(self):
         global Ser
-        value = self.spin3_4.value()
+        value = self.spinBox_20.value()
         cmd="mult 20 %d\r" % value
         Ser.write(cmd.encode())
         data=coreSERIAL.read_end(Ser, '\n').split()
@@ -779,7 +691,7 @@ class Window(QMainWindow, form_class):
 
     def update_spin3_5(self):
         global Ser
-        value = self.spin3_5.value()
+        value = self.spinBox_21.value()
         cmd="mult 21 %d\r" % value
         Ser.write(cmd.encode())
         data=coreSERIAL.read_end(Ser, '\n').split()
@@ -791,7 +703,7 @@ class Window(QMainWindow, form_class):
 
     def update_spin3_6(self):
         global Ser
-        value = self.spin3_6.value()
+        value = self.spinBox_22.value()
         cmd="mult 22 %d\r" % value
         Ser.write(cmd.encode())
         data=coreSERIAL.read_end(Ser, '\n').split()
@@ -803,7 +715,7 @@ class Window(QMainWindow, form_class):
 
     def update_spin3_7(self):
         global Ser
-        value = self.spin3_7.value()
+        value = self.spinBox_23.value()
         cmd="mult 23 %d\r" % value
         Ser.write(cmd.encode())
         data=coreSERIAL.read_end(Ser, '\n').split()
@@ -815,7 +727,7 @@ class Window(QMainWindow, form_class):
 
     def update_spin3_8(self):
         global Ser
-        value = self.spin3_8.value()
+        value = self.spinBox_24.value()
         cmd="mult 24 %d\r" % value
         Ser.write(cmd.encode())
         data=coreSERIAL.read_end(Ser, '\n').split()
