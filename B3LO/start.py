@@ -2,14 +2,14 @@ import sys
 import time
 import serial
 import string
+import random
 import datetime as dt
 import numpy as np
+import matplotlib
 from sys import argv, exit
 from io import StringIO
 from collections import namedtuple
 
-
-import matplotlib
 import coreSERIAL
 
 from PyQt6 import QtCore, uic
@@ -23,9 +23,18 @@ from PyQt6.QtWidgets import (
     QWidget,
 )
 
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.figure import Figure
+
 form_class = uic.loadUiType("mainwindow.ui")[0]
 
 Ser=0
+
+#containers for amp and frq graph displays
+x = np.arange(0,60)
+y1 = np.zeros(60)
+y2 = np.zeros(60)
+y3 = np.zeros(60)
 
 class Window(QMainWindow, form_class):
     def __init__(self):
@@ -93,11 +102,80 @@ class Window(QMainWindow, form_class):
         #Voice Coil
         self.spin_voicecoil.valueChanged.connect(self.update_voicecoil)
 
-        ### TIMER ###
+        ### PLOTS ###
+        self.xdata = list(range(60))
+        self.ydata1 = [float(0.) for i in range(60)]
+        self.ydata2 = [float(0.) for i in range(60)]
+        self.ydata3 = [float(0.) for i in range(60)]
+        self._plot_ref1 = None
+        self._plot_ref2 = None
+        self._plot_ref3 = None
+        self.show()
 
-        #self.timer = QtCore.QTimer(self)
-        #self.timer.setInterval(100)
-        #self.timer.timeout.connect(self.blink)
+        ### TIMERS ###
+
+        self.timer1 = QtCore.QTimer()               #Timer for pid a monitor
+        self.timer1.setInterval(100)
+        self.timer1.timeout.connect(self.update_aplot)
+
+        self.timer2 = QtCore.QTimer()               #Timer for pid f monitor
+        self.timer2.setInterval(25)
+        self.timer2.timeout.connect(self.update_fplot)
+
+    @QtCore.pyqtSlot()
+    def update_aplot(self):
+      global x
+      global y1
+      global y2
+      global y3
+      data = coreSERIAL.read_end(Ser, '\n').split()
+      if(str(data[0])=="pidmon"):
+        x_string  = "{:d}".format(int(data[1]))
+        y1_string = "{:.2f}".format(float(data[3]))         #Setpoint
+        y2_string = "{:.2f}".format(float(data[4]))         #Input
+        plotm = 0.020*(10**6)
+        plotb = 10.7*(10**6)
+        y3_string = "{:.2f}".format((float(data[5])-plotb)/plotm) #Ouput
+        #MAKE DATA VECTOR
+        x  = np.roll(x , -1)
+        y1 = np.roll(y1, -1)
+        y2 = np.roll(y2, -1)
+        y3 = np.roll(y3, -1)
+        x [-1] = np.genfromtxt(StringIO(x_string))
+        y1[-1] = np.genfromtxt(StringIO(y1_string))
+        y2[-1] = np.genfromtxt(StringIO(y2_string))
+        y3[-1] = np.genfromtxt(StringIO(y3_string))
+        #PLOT DATA
+
+    @QtCore.pyqtSlot()
+    def update_fplot(self):
+      data = coreSERIAL.read_end(Ser, '\n').split()
+      if(str(data[0])=="pidmon"):
+        self.ydata1 = self.ydata1[1:] + [float(data[2])]        #Setpoint
+        self.ydata2 = self.ydata2[1:] + [float(data[3])]        #Input
+        self.ydata3 = self.ydata3[1:] + [float(data[4])]        #Output
+        self.textEdit_1.setText(str(data[2]))
+        self.textEdit_2.setText(str(data[3]))
+        self.textEdit_3.setText(str(data[4]))
+      if self._plot_ref1 is None:
+        plot_refs1 = self.mpl_2.canvas.ax.plot(self.xdata, self.ydata1, 'blue')
+        plot_refs2 = self.mpl_2.canvas.ax.plot(self.xdata, self.ydata2, 'orange')
+        self.mpl_2.canvas.ax.set_xlim(xmin=0, xmax=60)
+        self.mpl_2.canvas.ax.set_ylim(ymin=-0.3, ymax=0.)
+
+        self.mpl_2.canvas.ax2 = self.mpl_2.canvas.ax.twinx()
+
+        plot_refs3 = self.mpl_2.canvas.ax2.plot(self.xdata, self.ydata3, 'green')
+        self.mpl_2.canvas.ax2.set_xlim(xmin=0, xmax=60)
+        self.mpl_2.canvas.ax2.set_ylim(ymin=-510, ymax=510)
+        self._plot_ref1 = plot_refs1[0]
+        self._plot_ref2 = plot_refs2[0]
+        self._plot_ref3 = plot_refs3[0]
+      else:
+        self._plot_ref1.set_ydata(self.ydata1)
+        self._plot_ref2.set_ydata(self.ydata2)
+        self._plot_ref3.set_ydata(self.ydata3)
+      self.mpl_2.canvas.draw()
 
     def _createMenu(self):
         menu = self.menuBar().addMenu("&Menu")
@@ -326,8 +404,8 @@ class Window(QMainWindow, form_class):
         global Ser
         Ser = serial.Serial(
             #port='/Users/young/dev/vmodem2',
-            port='/dev/ttyACM0',
-            baudrate=19200,
+            port='/dev/cu.usbmodemB3LO_CTRL1',
+            baudrate=115200,
             timeout=1
         )
 
@@ -441,18 +519,10 @@ class Window(QMainWindow, form_class):
     def btn_pidmonitor_clicked(self, enabled):
         if enabled:
             cmd = "pid a monitor\r"
-            global x
-            global y1
-            global y2
-            global y3
-            x = np.arange(0,60)
-            y1 = np.zeros(60)
-            y2 = np.zeros(60)
-            y3 = np.zeros(60)
-            #self.timer1.start()
+            self.timer1.start()
         else:
-            cmd = "q\r"
-            #self.timer1.stop()
+            cmd = "q\r\r"
+            self.timer1.stop()
         Ser.write(cmd.encode())
 
     def update_pidkp(self):
@@ -487,19 +557,11 @@ class Window(QMainWindow, form_class):
 ################## FRQUENCY PID #######################
     def btn_pidmonitor_2_clicked(self, enabled):
         if enabled:
-            cmd = "pid a monitor\r"
-            global x2
-            global y21
-            global y22
-            global y23
-            x2 = np.arange(0,60)
-            y21 = np.zeros(60)
-            y22 = np.zeros(60)
-            y23 = np.zeros(60)
-            #self.timer3.start()
+            cmd = "pid f monitor\r"
+            self.timer2.start()
         else:
-            cmd = "q\r"
-            #self.timer3.stop()
+            cmd = "q\r\r"
+            self.timer2.stop()
         Ser.write(cmd.encode())
 
     def update_pidkp_2(self):
