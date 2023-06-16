@@ -71,6 +71,15 @@ B3LO frequency is controlled via SLED input and QCL bias is controlled from here
 
 ![alt text](https://github.com/abegyoung/gusto-gui6/blob/main/images/B3LO_freqPIDTab.jpg?raw=true)
 
+PID setpoint (sp), input (FMDM), and output (QCL bias) can all be monitored while the microcontroller is running by enabling PID Monitor.  While in this state, the microcontroller is only responsive to select pid commands and synth control commands AND is outputing at 25 msec update the current PID status including Setpoint, Input, and Output.
+
+The GUI screen is Timer_2 is running at a 25 msec update rate streaming these values to the matplotlib window.
+
+Setpoint, P, I, D controls can be used to tune the PID in realtime, and the server command windows can also be used.
+
+A toggle function is available to toggle setpoints every 5 seconds to observe step responses.
+
+
 ### VCO REG Tab
 Hittite synthesizer register settings may be read and written here.
 
