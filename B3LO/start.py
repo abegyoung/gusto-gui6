@@ -30,12 +30,6 @@ form_class = uic.loadUiType("mainwindow.ui")[0]
 
 Ser=0
 
-#containers for amp and frq graph displays
-x = np.arange(0,60)
-y1 = np.zeros(60)
-y2 = np.zeros(60)
-y3 = np.zeros(60)
-
 class Window(QMainWindow, form_class):
     def __init__(self):
         super().__init__(parent=None)
@@ -115,7 +109,7 @@ class Window(QMainWindow, form_class):
         ### TIMERS ###
 
         self.timer1 = QtCore.QTimer()               #Timer for pid a monitor
-        self.timer1.setInterval(100)
+        self.timer1.setInterval(25)
         self.timer1.timeout.connect(self.update_aplot)
 
         self.timer2 = QtCore.QTimer()               #Timer for pid f monitor
@@ -124,28 +118,33 @@ class Window(QMainWindow, form_class):
 
     @QtCore.pyqtSlot()
     def update_aplot(self):
-      global x
-      global y1
-      global y2
-      global y3
       data = coreSERIAL.read_end(Ser, '\n').split()
       if(str(data[0])=="pidmon"):
-        x_string  = "{:d}".format(int(data[1]))
-        y1_string = "{:.2f}".format(float(data[3]))         #Setpoint
-        y2_string = "{:.2f}".format(float(data[4]))         #Input
-        plotm = 0.020*(10**6)
-        plotb = 10.7*(10**6)
-        y3_string = "{:.2f}".format((float(data[5])-plotb)/plotm) #Ouput
-        #MAKE DATA VECTOR
-        x  = np.roll(x , -1)
-        y1 = np.roll(y1, -1)
-        y2 = np.roll(y2, -1)
-        y3 = np.roll(y3, -1)
-        x [-1] = np.genfromtxt(StringIO(x_string))
-        y1[-1] = np.genfromtxt(StringIO(y1_string))
-        y2[-1] = np.genfromtxt(StringIO(y2_string))
-        y3[-1] = np.genfromtxt(StringIO(y3_string))
-        #PLOT DATA
+        self.ydata1 = self.ydata1[1:] + [float(data[2])]        #Setpoint
+        self.ydata2 = self.ydata2[1:] + [float(data[3])]        #Input
+        self.ydata3 = self.ydata3[1:] + [float(data[4])]        #Output
+        self.textEdit_4.setText(str(data[2]))
+        self.textEdit_5.setText(str(data[3]))
+        self.textEdit_6.setText(str(data[4]))
+      if self._plot_ref1 is None:
+        plot_refs1 = self.mpl.canvas.ax.plot(self.xdata, self.ydata1, 'blue')
+        plot_refs2 = self.mpl.canvas.ax.plot(self.xdata, self.ydata2, 'orange')
+        self.mpl.canvas.ax.set_xlim(xmin=0, xmax=60)
+        self.mpl.canvas.ax.set_ylim(ymin=20., ymax=40.)
+
+        self.mpl.canvas.ax2 = self.mpl.canvas.ax.twinx()
+
+        plot_refs3 = self.mpl.canvas.ax2.plot(self.xdata, self.ydata3, 'green')
+        self.mpl.canvas.ax2.set_xlim(xmin=0, xmax=60)
+        self.mpl.canvas.ax2.set_ylim(ymin=30300, ymax=35200)
+        self._plot_ref1 = plot_refs1[0]
+        self._plot_ref2 = plot_refs2[0]
+        self._plot_ref3 = plot_refs3[0]
+      else:
+        self._plot_ref1.set_ydata(self.ydata1)
+        self._plot_ref2.set_ydata(self.ydata2)
+        self._plot_ref3.set_ydata(self.ydata3)
+      self.mpl.canvas.draw()
 
     @QtCore.pyqtSlot()
     def update_fplot(self):
@@ -161,13 +160,13 @@ class Window(QMainWindow, form_class):
         plot_refs1 = self.mpl_2.canvas.ax.plot(self.xdata, self.ydata1, 'blue')
         plot_refs2 = self.mpl_2.canvas.ax.plot(self.xdata, self.ydata2, 'orange')
         self.mpl_2.canvas.ax.set_xlim(xmin=0, xmax=60)
-        self.mpl_2.canvas.ax.set_ylim(ymin=-0.3, ymax=0.)
+        self.mpl_2.canvas.ax.set_ylim(ymin=-0.2, ymax=0.2)
 
         self.mpl_2.canvas.ax2 = self.mpl_2.canvas.ax.twinx()
 
         plot_refs3 = self.mpl_2.canvas.ax2.plot(self.xdata, self.ydata3, 'green')
         self.mpl_2.canvas.ax2.set_xlim(xmin=0, xmax=60)
-        self.mpl_2.canvas.ax2.set_ylim(ymin=-510, ymax=510)
+        self.mpl_2.canvas.ax2.set_ylim(ymin=0, ymax=60)
         self._plot_ref1 = plot_refs1[0]
         self._plot_ref2 = plot_refs2[0]
         self._plot_ref3 = plot_refs3[0]
@@ -263,7 +262,7 @@ class Window(QMainWindow, form_class):
         cmd = "setsynth freq %.6f\r" % value
         Ser.write(cmd.encode())
         data=coreSERIAL.read_end(Ser, '\n').split()
-        self.serverResponse_2.setText(str(data))
+        self.serverResponse_4.setText(str(data))
 
     def btn_lock_status_clicked(self):
         cmd = "setsynth read 15\r"
@@ -436,7 +435,7 @@ class Window(QMainWindow, form_class):
         self.serverCommand_3.setText("")
 
     def sendcmd_4(self):
-        cmd= "%s\r" % self.serverCommand_3.text()
+        cmd= "%s\r" % self.serverCommand_4.text()
         Ser.write(cmd.encode())
         data=coreSERIAL.read_end(Ser, '\n')
         self.serverResponse_4.setText(str(data))
@@ -519,11 +518,16 @@ class Window(QMainWindow, form_class):
     def btn_pidmonitor_clicked(self, enabled):
         if enabled:
             cmd = "pid a monitor\r"
+            Ser.write(cmd.encode())
             self.timer1.start()
         else:
-            cmd = "q\r\r"
+            cmd = "q\r"
+            Ser.write(cmd.encode())
+            data=coreSERIAL.read_end(Ser, '\n').split()
+            self.serverResponse_3.setText(str(data))
+            cmd = "\r"
+            Ser.write(cmd.encode())
             self.timer1.stop()
-        Ser.write(cmd.encode())
 
     def update_pidkp(self):
         value = self.spin_pidkp.value()
@@ -558,11 +562,16 @@ class Window(QMainWindow, form_class):
     def btn_pidmonitor_2_clicked(self, enabled):
         if enabled:
             cmd = "pid f monitor\r"
+            Ser.write(cmd.encode())
             self.timer2.start()
         else:
-            cmd = "q\r\r"
+            cmd = "q\r"
+            Ser.write(cmd.encode())
+            data=coreSERIAL.read_end(Ser, '\n').split()
+            self.serverResponse_4.setText(str(data))
+            cmd = "\r"
+            Ser.write(cmd.encode())
             self.timer2.stop()
-        Ser.write(cmd.encode())
 
     def update_pidkp_2(self):
         value = self.spin_pidkp_2.value()
