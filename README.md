@@ -69,6 +69,8 @@ B3LO amplitude pump level pid via optical vane is controlled here.
 ### PID FRQ Tab
 B3LO frequency is controlled via SLED input and QCL bias is controlled from here.
 
+![alt text](https://github.com/abegyoung/gusto-gui6/blob/main/images/B3LO_freqPIDTab.jpg?raw=true)
+
 ### VCO REG Tab
 Hittite synthesizer register settings may be read and written here.
 
