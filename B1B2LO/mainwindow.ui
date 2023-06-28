@@ -27,7 +27,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <property name="movable">
      <bool>false</bool>
@@ -6737,7 +6737,7 @@
       <property name="geometry">
        <rect>
         <x>550</x>
-        <y>30</y>
+        <y>10</y>
         <width>111</width>
         <height>16</height>
        </rect>
@@ -6861,7 +6861,7 @@
       <property name="geometry">
        <rect>
         <x>380</x>
-        <y>30</y>
+        <y>10</y>
         <width>91</width>
         <height>16</height>
        </rect>
@@ -6935,7 +6935,7 @@
       <property name="geometry">
        <rect>
         <x>480</x>
-        <y>30</y>
+        <y>10</y>
         <width>61</width>
         <height>16</height>
        </rect>
@@ -7151,6 +7151,36 @@
       </property>
       <property name="text">
        <string>Tuning step response</string>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEdit_sp">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>30</y>
+        <width>104</width>
+        <height>21</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEdit_pv">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>30</y>
+        <width>104</width>
+        <height>21</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEdit_ov">
+      <property name="geometry">
+       <rect>
+        <x>570</x>
+        <y>30</y>
+        <width>104</width>
+        <height>21</height>
+       </rect>
       </property>
      </widget>
     </widget>

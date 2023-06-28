@@ -3,12 +3,11 @@ import time
 import serial
 import datetime as dt
 import numpy as np
+import matplotlib
 from sys import argv, exit
 from io import StringIO
 from collections import namedtuple
 
-
-import matplotlib
 import coreSERIAL
 
 from PyQt6 import QtCore, uic
@@ -21,6 +20,9 @@ from PyQt6.QtWidgets import (
     QToolBar,
     QWidget,
 )
+
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.figure import Figure
 
 form_class = uic.loadUiType("mainwindow.ui")[0]
 
@@ -102,16 +104,6 @@ class Window(QMainWindow, form_class):
         self.spin_psat_dac_7.valueChanged.connect(self.update_psat_7)
         self.spin_psat_dac_8.valueChanged.connect(self.update_psat_8)
 
-        self.timer = QtCore.QTimer(self)          #Timer for pid monitor
-        self.timer.setInterval(500)
-        self.timer.timeout.connect(self.blink)
-
-        self.timer2 = QtCore.QTimer(self)         #Timer for pid sp toggle
-        self.timer2.setInterval(10000)
-        self.timer2.timeout.connect(self.blink2)
-
-        self.currentSP=0
-
         #PID pixel control
         self.pixelButton_1.toggled.connect(self.pixelButton_1_clicked)
         self.pixelButton_2.toggled.connect(self.pixelButton_2_clicked)
@@ -131,6 +123,52 @@ class Window(QMainWindow, form_class):
         #PID monitor and toggle
         self.btn_pidmonitor.toggled.connect(self.pidmonitor_clicked)
         self.btn_pidtoggle.toggled.connect(self.pidtoggle_clicked)
+
+        ### PLOTS ###
+        self.xdata = list(range(60))
+        self.ydata1 = [float(0.) for i in range(60)]
+        self.ydata2 = [float(0.) for i in range(60)]
+        self.ydata3 = [float(0.) for i in range(60)]
+        self._plot_ref1 = None
+        self._plot_ref2 = None
+        self._plot_ref3 = None
+        self.show()
+
+        ### TIMERS ###
+
+        self.timer = QtCore.QTimer()               #Timer for pid a monitor
+        self.timer.setInterval(25)
+        self.timer.timeout.connect(self.update_plot)
+
+    @QtCore.pyqtSlot()
+    def update_plot(self):
+      data = coreSERIAL.read_end(Ser, '\n').split()
+      if(str(data[0])=="pidmon"):
+        self.ydata1 = self.ydata1[1:] + [float(data[3])]        #Setpoint
+        self.ydata2 = self.ydata2[1:] + [float(data[4])]        #Input
+        self.ydata3 = self.ydata3[1:] + [float(data[5])]        #Output
+        self.textEdit_sp.setText(str(data[3]))
+        self.textEdit_pv.setText(str(data[4]))
+        self.textEdit_ov.setText(str(data[5]))
+      if self._plot_ref1 is None:
+        plot_refs1 = self.mpl.canvas.ax.plot(self.xdata, self.ydata1, 'blue')
+        plot_refs2 = self.mpl.canvas.ax.plot(self.xdata, self.ydata2, 'orange')
+        self.mpl.canvas.ax.set_xlim(xmin=0, xmax=60)
+        self.mpl.canvas.ax.set_ylim(ymin=20., ymax=40.)
+
+        self.mpl.canvas.ax2 = self.mpl.canvas.ax.twinx()
+
+        plot_refs3 = self.mpl.canvas.ax2.plot(self.xdata, self.ydata3, 'green')
+        self.mpl.canvas.ax2.set_xlim(xmin=0, xmax=60)
+        self.mpl.canvas.ax2.set_ylim(ymin=10000000, ymax=16777216)
+        self._plot_ref1 = plot_refs1[0]
+        self._plot_ref2 = plot_refs2[0]
+        self._plot_ref3 = plot_refs3[0]
+      else:
+        self._plot_ref1.set_ydata(self.ydata1)
+        self._plot_ref2.set_ydata(self.ydata2)
+        self._plot_ref3.set_ydata(self.ydata3)
+      self.mpl.canvas.draw()
 
     def _createMenu(self):
         menu = self.menuBar().addMenu("&Menu")
@@ -304,68 +342,19 @@ class Window(QMainWindow, form_class):
         global pixel
         if enabled:
             cmd="pid %d monitor\r" % pixel
-            global x
-            global y1
-            global y2
-            global y3
-            x = np.arange(0,60)
-            y1 = np.zeros(60)
-            y2 = np.zeros(60)
-            y3 = np.zeros(60)
+            Ser.write(cmd.encode())
             self.timer.start()
         else:
             cmd = "q\r"
+            Ser.write(cmd.encode())
+            data=coreSERIAL.read_end(Ser, '\n').split()
+            self.serverResponse_2.setText(str(data))
+            cmd = "\r"
+            Ser.write(cmd.encode())
             self.timer.stop()
-        Ser.write(cmd.encode())
-
-    @QtCore.pyqtSlot()
-    def blink(self):
-        global x
-        global y1
-        global y2
-        global y3
-        data = coreSERIAL.read_end(Ser, '\n').split()
-        if(str(data[0])=="pidmon"):
-            x_string  = "{:d}".format(int(data[1]))
-            y1_string = "{:.2f}".format(float(data[3]))         #Setpoint
-            y2_string = "{:.2f}".format(float(data[4]))         #Input
-            y3_string = "{:.2f}".format((float(data[5])-17500)/500.) #Ouput
-            #MAKE DATA VECTOR
-            x  = np.roll(x , -1)
-            y1 = np.roll(y1, -1)
-            y2 = np.roll(y2, -1)
-            y3 = np.roll(y3, -1)
-            x [-1] = np.genfromtxt(StringIO(x_string))
-            y1[-1] = np.genfromtxt(StringIO(y1_string))
-            y2[-1] = np.genfromtxt(StringIO(y2_string))
-            y3[-1] = np.genfromtxt(StringIO(y3_string))
-            #PLOT DATA
-            self.mpl.canvas.ax.clear()
-            #self.mpl.canvas.ax.set_ylim(ymin=0, ymax=45)
-            self.mpl.canvas.ax.plot(x,y1)
-            self.mpl.canvas.ax.plot(x,y2)
-            #self.mpl.canvas.ax.plot(x,y3)
-            self.mpl.canvas.draw()
 
     def pidtoggle_clicked(self, enabled):
-        if enabled:
-            self.timer2.start()
-        else:
-            self.timer2.stop()
-
-    @QtCore.pyqtSlot()
-    def blink2(self):
-        global pixel
-        if self.currentSP==0:
-            value = self.spin_toggleset_1.value()
-            self.currentSP=1
-        elif self.currentSP==1:
-            value = self.spin_toggleset_2.value()
-            self.currentSP=0
-        cmd = "pid %d sp %.1f\r" % (pixel,value)
-        Ser.write(cmd.encode())
-        data=coreSERIAL.read_end(Ser, '\n')
-        self.serverResponse_2.setText(str(data))
+        pass
 
     def pixelButton_1_clicked(self, enabled):
         if enabled:
@@ -412,7 +401,7 @@ class Window(QMainWindow, form_class):
         Ser = serial.Serial(
             #port='/dev/ttyACM0',
             port='/dev/cu.usbmodemB2LO_CTRL1',
-            baudrate=19200,
+            baudrate=115200,
             timeout=1
         )
         cmd="id\r"

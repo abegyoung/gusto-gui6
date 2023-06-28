@@ -2,7 +2,6 @@ import sys
 import time
 import serial
 import string
-import random
 import datetime as dt
 import numpy as np
 import matplotlib
