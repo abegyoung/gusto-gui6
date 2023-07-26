@@ -3,7 +3,7 @@ The GUSTO graphical user interfaces started life in a hotel room (as all good th
 
 Many more GUIs have proliferated from that template, including autocorrelator control & display, and now GUSTO LO controls.
 
-I've finally been convinced that PyQt 3 is the future of 2023, and this repository updates the old GUIs to use the PyQt 6 framework and Python 3.11
+I've finally been convinced that Python 3 is the future of 2023, and this repository updates the old GUIs to use the PyQt 6 framework and Python 3.11
 
 ## Installation
 ### For Mac:
