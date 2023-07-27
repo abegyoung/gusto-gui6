@@ -6,6 +6,7 @@ import numpy as np
 from sys import argv, exit
 from io import StringIO
 import coreSERIAL
+import matplotlib.pyplot as plt
 
 from PyQt6 import QtCore, uic
 from PyQt6.QtWidgets import (
@@ -21,8 +22,9 @@ from PyQt6.QtWidgets import (
 form_class = uic.loadUiType("mainwindow.ui")[0]
 
 Ser=0
-x = np.arange(600)
-y = np.zeros(600)
+i=0
+t_start=0
+
 
 class Window(QMainWindow, form_class):
     def __init__(self):
@@ -42,6 +44,13 @@ class Window(QMainWindow, form_class):
 
       self.runButton.toggled.connect(self.runButton_clicked)
       self.startButton.toggled.connect(self.startButton_clicked)
+
+      #PLOT
+      self.xdata = list(range(60))
+      self.ydata1 = [float(0.) for i in range(60)]
+      self._plot_ref1 = None
+      self.show()
+
 
       ### TIMER ###
 
@@ -87,7 +96,7 @@ class Window(QMainWindow, form_class):
     def btn_open_clicked(self):
       global Ser
       Ser = serial.Serial(
-          port='/dev/ttyACM0',
+          port='COM6', #COM6 is for windows. Linux e.g. '/dev/ttyACM0',
           baudrate=19200,
           timeout=1
       )
@@ -98,6 +107,7 @@ class Window(QMainWindow, form_class):
 
     def btn_close_clicked(self):
       global Ser
+      global i
       self.timer.stop()
       Ser.close()
       Ser = 0
@@ -105,8 +115,8 @@ class Window(QMainWindow, form_class):
     @QtCore.pyqtSlot()
     def blink(self):
       global Ser
-      global x
-      global y
+      global i
+      global t_start
       cmd="PWR?\n"
       Ser.write(cmd.encode())
       data=coreSERIAL.read_end(Ser, '\n').split()
@@ -115,18 +125,31 @@ class Window(QMainWindow, form_class):
       watt_string = "{:.3e}".format(watt)
       self.watt_textEdit.setText(watt_string)
       #MAKE DATA
-      y = np.roll(y, -1)
-      #y[-1] = np.genfromtxt(StringIO(data[0])) #plot dBm
-      y[-1] = np.genfromtxt(StringIO(watt_string)) #plot Watt
-      #PLOT DATA
-      self.mpl.canvas.ax.clear()
-      #self.mpl.canvas.ax.set_xlim(xmin=0, xmax=600)
-      #self.mpl.canvas.ax.set_ylim(ymin=9.0*(10**-5), ymax=4.0*(10**-4))
-      self.mpl.canvas.ax.get_xaxis().grid(True)
-      self.mpl.canvas.ax.get_yaxis().grid(True)
-      self.mpl.canvas.ax.plot(x,y)
-      self.mpl.canvas.draw()
-
+      self.ydata1 = self.ydata1[1:] + [np.genfromtxt(StringIO(watt_string))]        #Setpoint
+      if self._plot_ref1 is None:
+        #t_start = time.time()
+        #i=1
+        
+        self.mpl.canvas.ax.get_xaxis().grid(True)
+        self.mpl.canvas.ax.get_yaxis().grid(True)  
+        self.mpl.canvas.ax.set_xlim(0,50)
+        self.mpl.canvas.ax.set_ylim(0,5E-7)
+        self.mpl.canvas.draw()
+        self.background = self.mpl.canvas.copy_from_bbox(self.mpl.canvas.ax.bbox)
+        plot_refs1 = self.mpl.canvas.ax.plot(self.xdata, self.ydata1, 'blue')
+        self._plot_ref1 = plot_refs1[0]
+      else:  
+        #i=i+1
+        self._plot_ref1.set_ydata(self.ydata1)
+        self.mpl.canvas.restore_region(self.background)
+        # draw the point on the screen
+        self.mpl.canvas.ax.draw_artist(self._plot_ref1)
+        # blit the axes
+        self.mpl.canvas.blit(self.mpl.canvas.ax.bbox)
+        #tx = 'Mean Frame Rate:\n {fps:.3f}FPS'.format(fps= ((i+1) / (time.time() - t_start)) ) 
+        #print(tx)
+  
+      
 def main():
   app = QtGui.QApplication(sys.argv)
   myWindow = MyWindowClass(None)
