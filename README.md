@@ -23,6 +23,9 @@ when done working in the virtual environment: `deactivate`
 Libraries note:
    for coreSERIAL, a SORAL internal library for making serial and TCP port read/receive calls and waiting for ine terminators, the GUI uses one in this repo.  Optionally do this: `export PYTHONPATH="$PWD/libraries"` from the git repo root.
 
+   For Windows quick solution is:
+      add a .pth file (e.g. CoreSerial.pth) to .venv\Lib\site-packages with the full path to the folder (e.g. C:\Users\NAME\gusto-gui6\libraries)
+
 ## Anritsu
 This gui displays the Anritsu MA24126A USB power meter head in mW, dBm, and a scrolling screen.
 
